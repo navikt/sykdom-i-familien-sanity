@@ -1,19 +1,19 @@
-import ContentContainer from "./contentContainer";
-import ExpandableContent from "./expandableContent";
-import SectionContentType from "./section";
-import Veilederpanel from "./veilederpanel";
-import TitleAndContentBlock from "./titleAndContentBlock";
-import GroupedContent from "./groupedContent";
-import TitleAndText from "./titleAndText";
+import blockContent from './BlockContent';
+import ExpandableContent from './ExpandableContent';
+import SectionContentType from './Section';
+import Veilederpanel from './Veilederpanel';
+import titleAndBlockContent from './TitleAndBlockContent';
+import GroupedContent from './GroupedContent';
+import TitleAndText from './TitleAndText';
 
 const objects = [
-  ExpandableContent,
-  SectionContentType,
-  Veilederpanel,
-  ContentContainer,
-  TitleAndContentBlock,
-  GroupedContent,
-  TitleAndText
+    ExpandableContent,
+    SectionContentType,
+    Veilederpanel,
+    blockContent,
+    titleAndBlockContent,
+    GroupedContent,
+    TitleAndText
 ];
 
 export default objects;

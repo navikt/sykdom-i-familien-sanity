@@ -1,8 +1,6 @@
-import { validateLocaleString } from '../../utils/contentValidation';
-
-const SectionContentType = {
-    title: 'Seksjon',
-    name: 'section',
+const BlockContent = {
+    title: 'Innhold',
+    name: 'blockContent',
     type: 'object',
     fields: [
         {
@@ -13,12 +11,6 @@ const SectionContentType = {
                 Rule.custom((obj) => {
                     return validateLocaleString(obj, true);
                 })
-        },
-        {
-            title: 'Illustrasjon',
-            name: 'illustration',
-            type: 'reference',
-            to: { type: 'illustration' }
         },
         {
             title: 'Innhold',
@@ -36,17 +28,7 @@ const SectionContentType = {
                 { type: 'groupedContent' }
             ]
         }
-    ],
-    preview: {
-        select: {
-            title: 'title'
-        },
-        prepare(props) {
-            return {
-                title: props.title.nb
-            };
-        }
-    }
+    ]
 };
 
-export default SectionContentType;
+export default BlockContent;

@@ -1,22 +1,23 @@
-import commonFieldsets from "../config/commonFieldsets";
-import commonInternalFields from "../config/commonInternalFields";
-import { validateLocaleString } from "../../utils/contentValidation";
-import { titleField } from "./contentContainer";
-
 const ExpandableContent = {
-  title: "Ekspanderbart innhold",
-  name: "expandableContent",
-  type: "object",
-  fieldsets: commonFieldsets,
-  fields: [
-    ...commonInternalFields,
-    titleField,
-    {
-      title: "Innhold",
-      name: "content",
-      type: "localeBlock"
-    }
-  ]
+    title: 'Ekspanderbart innhold',
+    name: 'expandableContent',
+    type: 'object',
+    fields: [
+        {
+            title: 'Tittel',
+            name: 'title',
+            type: 'localeString',
+            validation: (Rule) =>
+                Rule.custom((obj) => {
+                    return validateLocaleString(obj, true);
+                })
+        },
+        {
+            title: 'Innhold',
+            name: 'content',
+            type: 'blockContent'
+        }
+    ]
 };
 
 export default ExpandableContent;
