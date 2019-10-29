@@ -1,8 +1,7 @@
-import InternalCommon from "./internalCommon";
-import YtelsePage from "./ytelsePage";
-import Illustration from "./illustration";
-import Ytelse from "./ytelse";
+import YtelsePage from './YtelsePage';
+import Illustration from './illustration';
+import Ytelse from './Ytelse';
 
-const documents = [YtelsePage, Illustration, InternalCommon, Ytelse];
+const documents = [YtelsePage, Illustration, Ytelse];
 
 export default documents;

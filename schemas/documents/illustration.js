@@ -1,7 +1,5 @@
-import React from "react";
-import IllustrationContentIcon from "../../plugins/IllustrationContentIcon";
-import commonFieldsets from "../config/commonFieldsets";
-import commonInternalFields from "../config/commonInternalFields";
+import React from 'react';
+import IllustrationContentIcon from '../../plugins/IllustrationContentIcon';
 
 // const IllustrationIcon = props => (
 //   <svg width={36} height={35} {...props}>
@@ -13,37 +11,33 @@ import commonInternalFields from "../config/commonInternalFields";
 // );
 
 const Illustration = {
-  title: "Illustrasjon",
-  name: "illustration",
-  type: "document",
-  fieldsets: commonFieldsets,
-  fields: [
-    ...commonInternalFields,
-    {
-      title: "Beskrivelse",
-      name: "description",
-      type: "string"
-    },
-    {
-      title: "SVG",
-      name: "svg",
-      type: "svgUploadPreview"
+    title: 'Illustrasjon',
+    name: 'illustration',
+    type: 'document',
+    fields: [
+        {
+            title: 'Navn',
+            name: 'name',
+            type: 'string'
+        },
+        {
+            title: 'SVG',
+            name: 'svg',
+            type: 'svgUploadPreview'
+        }
+    ],
+    preview: {
+        select: {
+            name: 'name',
+            svg: 'svg'
+        },
+        prepare({ name, svg }) {
+            return {
+                title: name,
+                media: <IllustrationContentIcon svg={svg} />
+            };
+        }
     }
-  ],
-  preview: {
-    select: {
-      name: "name",
-      description: "description",
-      svg: "svg"
-    },
-    prepare(props) {
-      return {
-        title: props.name,
-        subtitle: props.description ? props.description : undefined,
-        media: <IllustrationContentIcon svg={props.svg} />
-      };
-    }
-  }
 };
 
 export default Illustration;
