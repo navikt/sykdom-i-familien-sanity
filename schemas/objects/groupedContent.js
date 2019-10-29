@@ -9,11 +9,11 @@ const GroupedContent = {
         {
             title: 'Tittel',
             name: 'title',
-            type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            type: 'localeString'
+            // validation: (Rule) =>
+            //     Rule.custom((obj) => {
+            //         return validateLocaleString(obj, true);
+            //     })
         },
         {
             title: 'Hvordan skal informasjonen vises',
@@ -31,7 +31,7 @@ const GroupedContent = {
             type: 'array',
             of: [
                 {
-                    type: 'blockContent'
+                    type: 'titleAndBlockContent'
                 }
             ]
         }

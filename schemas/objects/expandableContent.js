@@ -1,3 +1,5 @@
+import { validateLocaleString } from '../../utils/contentValidation';
+
 const ExpandableContent = {
     title: 'Ekspanderbart innhold',
     name: 'expandableContent',

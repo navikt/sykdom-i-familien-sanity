@@ -12,16 +12,24 @@ const YtelsePage = {
             title: 'Ytelse',
             name: 'ytelse',
             type: 'reference',
-            to: { type: 'ytelse' }
+            to: { type: 'ytelse' },
+            validation: (Rule) => Rule.required()
         },
         {
-            title: 'Slug',
-            name: 'slug',
-            type: 'slug',
-            options: {
-                source: 'title'
-            }
+            title: 'Lenke til søknadsskjema',
+            name: 'formUrl',
+            type: 'string',
+            validation: (Rule) => Rule.required()
         },
+        // {
+        //     title: 'Slug',
+        //     name: 'slug',
+        //     type: 'slug',
+        //     options: {
+        //         source: 'name'
+        //     },
+        //     validation: (Rule) => Rule.required()
+        // },
         {
             title: 'Tittel',
             name: 'title',

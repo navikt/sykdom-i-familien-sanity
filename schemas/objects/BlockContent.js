@@ -1,3 +1,6 @@
+import { getLocaleContent } from '../../utils/getLocaleContent';
+import { validateLocaleString } from '../../utils/contentValidation';
+
 const BlockContent = {
     title: 'Innhold',
     name: 'blockContent',
@@ -28,7 +31,17 @@ const BlockContent = {
                 { type: 'groupedContent' }
             ]
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title'
+        },
+        prepare(props) {
+            return {
+                title: getLocaleContent(props.title)
+            };
+        }
+    }
 };
 
 export default BlockContent;
