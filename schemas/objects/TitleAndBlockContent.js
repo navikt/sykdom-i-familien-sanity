@@ -19,12 +19,6 @@ const titleAndBlockContent = {
             fieldset: 'setup'
         },
         {
-            title: 'Ekstratittel (overstyrer innholdets tittel)',
-            name: 'title',
-            type: 'localeString',
-            fieldset: 'setup'
-        },
-        {
             title: 'Innhold',
             name: 'content',
             type: 'blockContent'
@@ -36,10 +30,8 @@ const titleAndBlockContent = {
             content: 'content'
         },
         prepare(props) {
-            const { title: overrideTitle, content } = props;
-            const title = hasLocaleValue(overrideTitle) ? overrideTitle : content.title;
             return {
-                title: hasLocaleValue(title) ? title[defaultLanguage] : 'Uten tittel'
+                title: hasLocaleValue(props.content.title) ? props.content.title[defaultLanguage] : 'Uten tittel'
             };
         }
     }

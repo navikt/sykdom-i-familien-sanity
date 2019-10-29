@@ -1,3 +1,6 @@
+import { defaultLanguage } from '../languages';
+import { getLocaleContent } from '../../utils/getLocaleContent';
+
 const TitleAndText = {
     title: 'Tittel og tekst',
     name: 'titleAndText',
@@ -6,11 +9,7 @@ const TitleAndText = {
         {
             title: 'Tittel',
             name: 'title',
-            type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            type: 'localeString'
         },
         {
             title: 'Innhold',
@@ -22,9 +21,9 @@ const TitleAndText = {
         select: {
             title: 'title'
         },
-        prepare(values) {
+        prepare(props) {
             return {
-                title: values.title.nb
+                title: getLocaleContent(props.title, defaultLanguage) || 'Uten tittel'
             };
         }
     }
