@@ -1,50 +1,41 @@
+import { getLocaleContent } from '../../utils/getLocaleContent';
+import { defaultLanguage } from '../languages';
+import { localeContentValidation } from '../../utils/contentValidation';
+
 const YtelsePage = {
     title: 'Faktaside',
-    name: 'page',
+    name: 'ytelsePage',
     type: 'document',
+    fieldsets: [{ name: 'internal', title: 'Internt' }, { name: 'intro', title: 'Introduksjon' }],
     fields: [
-        {
-            title: 'Navn',
-            name: 'name',
-            type: 'string'
-        },
         {
             title: 'Ytelse',
             name: 'ytelse',
             type: 'reference',
+            fieldset: 'internal',
             to: { type: 'ytelse' },
             validation: (Rule) => Rule.required()
         },
         {
-            title: 'Lenke til søknadsskjema',
-            name: 'formUrl',
-            type: 'string',
-            validation: (Rule) => Rule.required()
-        },
-        // {
-        //     title: 'Slug',
-        //     name: 'slug',
-        //     type: 'slug',
-        //     options: {
-        //         source: 'name'
-        //     },
-        //     validation: (Rule) => Rule.required()
-        // },
-        {
             title: 'Tittel',
             name: 'title',
-            type: 'localeString'
+            type: 'localeString',
+            fieldset: 'intro',
+            validation: localeContentValidation
         },
         {
             title: 'Illustrasjon',
             name: 'illustration',
             type: 'reference',
+            fieldset: 'intro',
             to: { type: 'illustration' }
         },
         {
             title: 'Kort fortalt',
             name: 'inShort',
-            type: 'localeRichText'
+            fieldset: 'intro',
+            type: 'localeRichText',
+            validation: localeContentValidation
         },
         {
             title: 'Innholdsseksjoner',
@@ -52,7 +43,15 @@ const YtelsePage = {
             type: 'array',
             of: [{ type: 'section' }]
         }
-    ]
+    ],
+    preview: {
+        select: { title: 'title', ytelse: 'ytelse' },
+        prepare(props) {
+            return {
+                title: getLocaleContent(props.title, defaultLanguage)
+            };
+        }
+    }
 };
 
 export default YtelsePage;
