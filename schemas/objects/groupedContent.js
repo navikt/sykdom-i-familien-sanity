@@ -3,17 +3,13 @@ import { defaultLanguage } from '../languages';
 const GroupedContent = {
     title: 'Gruppert innhold',
     name: 'groupedContent',
-    type: 'document',
+    type: 'object',
     fieldsets: [{ name: 'render', title: 'Presentasjon' }],
     fields: [
         {
             title: 'Tittel',
             name: 'title',
             type: 'localeString'
-            // validation: (Rule) =>
-            //     Rule.custom((obj) => {
-            //         return validateLocaleString(obj, true);
-            //     })
         },
         {
             title: 'Hvordan skal informasjonen vises',
