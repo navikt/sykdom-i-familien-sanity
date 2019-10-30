@@ -2,7 +2,7 @@ import { defaultLanguage } from '../languages';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 
 const TitleAndText = {
-    title: 'Tittel og tekst',
+    title: 'Tekstblokk',
     name: 'titleAndText',
     type: 'object',
     fields: [

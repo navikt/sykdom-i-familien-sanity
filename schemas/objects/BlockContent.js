@@ -23,11 +23,10 @@ const BlockContent = {
                 {
                     type: 'block'
                 },
+                { type: 'titleAndText' },
                 {
                     type: 'illustration'
                 },
-                { type: 'titleAndText' },
-                { type: 'expandableContent' },
                 { type: 'groupedContent' }
             ]
         }
