@@ -17,6 +17,14 @@ const YtelsePage = {
             validation: (Rule) => Rule.required()
         },
         {
+            title: 'slug',
+            type: 'slug',
+            name: 'slug',
+            options: {
+                source: 'title.nb'
+            }
+        },
+        {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
