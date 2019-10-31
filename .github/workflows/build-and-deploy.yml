@@ -48,8 +48,8 @@ jobs:
         run: |
           npm i @sanity/cli
           npm ci
-          ls -la
           npm run build
+          ls -la          
       - name: upload dist folder to next job.
         uses: actions/upload-artifact@v1
         with:
