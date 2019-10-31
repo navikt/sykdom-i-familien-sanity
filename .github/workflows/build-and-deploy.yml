@@ -45,7 +45,9 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: build code
-        run: npm run build
+        run: |
+          npm install -g @sanity/cli
+          npm run build
       - name: upload dist folder to next job.
         uses: actions/upload-artifact@v1
         with:
