@@ -25,13 +25,12 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install and test
         run: |
-          npm install -g @sanity/cli
           npm ci
-          npm test
+          npm run test
         env:
           CI: true
 
-  build-code-and-push-docker:
+  build-code-and-deploy-studio:
     name: Build code and push docker image
     if: github.ref == 'refs/heads/dev-*' || github.ref == 'refs/heads/master' # Build and push docker if branch is either master or dev-*
     needs: test
@@ -46,34 +45,17 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: build code
-        run: npm build
-      - name: Create Docker tag
-        env:
-          NAME: sykdom-i-familien
-        run: |
-          echo "docker.pkg.github.com"/"$GITHUB_REPOSITORY"/"$NAME" > .docker_image
-          echo "$(date "+%Y.%m.%d")-$(git rev-parse --short HEAD)" > .docker_tag
-      - name: Build Docker image
-        run: |
-          docker build -t $(cat .docker_image):$(cat .docker_tag) .
-      - name: Login to Github Package Registry
-        env:
-          DOCKER_USERNAME: x-access-token
-          DOCKER_PASSWORD: ${{ secrets.GITHUB_ACCESS_TOKEN }}
-        run: |
-          echo "$DOCKER_PASSWORD" | docker login --username "$DOCKER_USERNAME" --password-stdin docker.pkg.github.com
-      - name: Push Docker image
-        run: "docker push $(cat .docker_image):$(cat .docker_tag)"
-      - name: pass image file to next job.
+        run: npm run build
+      - name: upload dist folder to next job.
         uses: actions/upload-artifact@v1
         with:
-          name: docker_image
-          path: .docker_image
+          name: dist
+          path: dist/
       - name: pass tag file to next job.
         uses: actions/upload-artifact@v1
         with:
-          name: docker_tag
-          path: .docker_tag
+          name: dist
+          path: dist/
 
   deploy-dev-sbs:
     name: Deploy to dev-sbs
@@ -84,28 +66,19 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v1
         # Download the image and tag file to use for the deployment cli.
-      - name: Download image file
+      - name: Download dist folder
         uses: actions/download-artifact@v1
         with:
-          name: docker_image
-      - name: Download tag file
-        uses: actions/download-artifact@v1
-        with:
-          name: docker_tag
+          name: dist
       - name: unpack
         run: |
-          cp docker_image/.docker_image .
-          cp docker_tag/.docker_tag .
+          cp dist/ .
       - name: debug
         run: ls -la
-      - name: deploy to dev-sbs
-        uses: navikt/deployment-cli/action@0.4.0
+      - name: deploy to studio
+        run: npm run deploy
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          cluster: dev-sbs
-          team: dusseldorf
-          resources: nais/dev-sbs.yml
+          SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
 
   deploy-prod-sbs:
     name: Deploy to prod-sbs
