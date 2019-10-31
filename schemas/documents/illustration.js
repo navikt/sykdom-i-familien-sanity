@@ -21,6 +21,12 @@ const Illustration = {
             type: 'string'
         },
         {
+            title: 'Kategori',
+            name: 'category',
+            type: 'reference',
+            to: { type: 'illustrationCategory' }
+        },
+        {
             title: 'SVG',
             name: 'svg',
             type: 'svgUploadPreview'
