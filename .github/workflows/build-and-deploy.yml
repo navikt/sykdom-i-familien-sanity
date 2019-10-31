@@ -60,7 +60,7 @@ jobs:
   deploy-dev-sbs:
     name: Deploy to dev-sbs
     if: github.ref == 'refs/heads/dev-*' || github.ref == 'refs/heads/master' # Deploy if branch is either master or dev-*
-    needs: build-code-and-push-docker # Depends on build-code-and-push-docker job
+    needs: build-code-and-deploy-studio # Depends on build-code-and-deploy-studio job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -83,7 +83,7 @@ jobs:
   deploy-prod-sbs:
     name: Deploy to prod-sbs
     if: github.ref == 'refs/heads/master'  # If the branch is master
-    needs: build-code-and-push-docker # Depends on build-code-and-push-docker job
+    needs: build-code-and-deploy-studio # Depends on build-code-and-deploy-studio job
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
