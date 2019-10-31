@@ -7,8 +7,10 @@
   "author": "frodehansen2 <frode.hansen@bekk.no>",
   "license": "UNLICENSED",
   "scripts": {
+    "build": "sanity build",
     "start": "sanity start",
-    "test": "sanity check"
+    "test": "sanity check",
+    "deploy": "sanity deploy"
   },
   "keywords": [
     "sanity"
