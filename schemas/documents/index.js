@@ -1,8 +1,8 @@
 import YtelsePage from './YtelsePage';
-import Illustration from './illustration';
+import Illustration from './Illustration';
 import Ytelse from './Ytelse';
-import Frontpage from './frontpage';
-import IllustrationCategory from './illustrationCategory';
+import Frontpage from './Frontpage';
+import IllustrationCategory from './IllustrationCategory';
 
 const documents = [Frontpage, YtelsePage, Illustration, Ytelse, IllustrationCategory];
 
