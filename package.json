@@ -9,7 +9,7 @@
   "scripts": {
     "build": "sanity build",
     "start": "sanity start",
-    "test": "sanity check",
+    "test": "DEBUG=sanity* sanity check ",
     "deploy": "sanity deploy"
   },
   "keywords": [
@@ -17,11 +17,11 @@
   ],
   "dependencies": {
     "@sanity/base": "^0.144.0",
-    "@sanity/components": "^0.144.0",
+    "@sanity/components": "^0.144.2",
     "@sanity/core": "^0.144.0",
-    "@sanity/default-layout": "^0.144.0",
+    "@sanity/default-layout": "^0.144.2",
     "@sanity/default-login": "^0.144.0",
-    "@sanity/desk-tool": "^0.144.0",
+    "@sanity/desk-tool": "^0.144.2",
     "prop-types": "^15.6",
     "react": "^16.2",
     "react-dom": "^16.2",
