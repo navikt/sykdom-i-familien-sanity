@@ -47,8 +47,7 @@ jobs:
       - name: build code
         run: |
           npm i @sanity/cli
-          npm ci
-          npm run deploy
+          npm clean-install && npm run deploy
           ls -la
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}          
