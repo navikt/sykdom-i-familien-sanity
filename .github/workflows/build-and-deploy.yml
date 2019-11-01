@@ -51,7 +51,7 @@ jobs:
           npm run deploy
           ls -la
         env:
-          SANITY_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}          
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}          
       # - name: upload dist folder to next job.
       #   uses: actions/upload-artifact@v1
       #   with:
