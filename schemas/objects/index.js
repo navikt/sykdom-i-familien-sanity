@@ -1,17 +1,17 @@
-import blockContent from './BlockContent';
+import BlockContent from './BlockContent';
 import SectionContentType from './Section';
 import Veilederpanel from './Veilederpanel';
 import titleAndBlockContent from './TitleAndBlockContent';
 import GroupedContent from './GroupedContent';
 import TitleAndText from './TitleAndText';
-import FrontpagePageLink from './frontpagePageLink';
-import FrontpageLink from './frontpageLink';
-import Link from './link';
+import FrontpagePageLink from './FrontpagePageLink';
+import FrontpageLink from './FrontpageLink';
+import Link from './Link';
 
 const objects = [
     SectionContentType,
     Veilederpanel,
-    blockContent,
+    BlockContent,
     titleAndBlockContent,
     GroupedContent,
     TitleAndText,
