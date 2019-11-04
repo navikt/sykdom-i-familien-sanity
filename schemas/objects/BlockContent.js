@@ -30,6 +30,7 @@ const BlockContent = {
                     }
                 },
                 { type: 'titleAndText' },
+                { type: 'expandableContent' },
                 {
                     type: 'illustration'
                 },

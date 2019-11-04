@@ -1,4 +1,7 @@
 import { validateLocaleString } from '../../utils/contentValidation';
+import { blockContentField } from '../parts/blockContentField';
+import { getLocaleContent } from '../../utils/getLocaleContent';
+import { defaultLanguage } from '../languages';
 
 const ExpandableContent = {
     title: 'Ekspanderbart innhold',
@@ -17,9 +20,23 @@ const ExpandableContent = {
         {
             title: 'Innhold',
             name: 'content',
-            type: 'blockContent'
+            type: 'localeRichText',
+            validation: (Rule) =>
+                Rule.custom((obj) => {
+                    return validateLocaleString(obj, true);
+                })
         }
-    ]
+    ],
+    preview: {
+        select: {
+            title: 'title'
+        },
+        prepare(props) {
+            return {
+                title: getLocaleContent(props.title, defaultLanguage)
+            };
+        }
+    }
 };
 
 export default ExpandableContent;
