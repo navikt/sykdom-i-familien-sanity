@@ -21,7 +21,13 @@ const BlockContent = {
             type: 'array',
             of: [
                 {
-                    type: 'block'
+                    type: 'block',
+                    styles: [],
+                    lists: [],
+                    marks: {
+                        decorators: [],
+                        annotations: []
+                    }
                 },
                 { type: 'titleAndText' },
                 {
