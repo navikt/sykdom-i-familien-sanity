@@ -18,13 +18,15 @@ const Illustration = {
         {
             title: 'Navn',
             name: 'name',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
         },
         {
             title: 'Kategori',
             name: 'category',
             type: 'reference',
-            to: { type: 'illustrationCategory' }
+            to: { type: 'illustrationCategory' },
+            validation: (Rule) => Rule.required()
         },
         {
             title: 'SVG',
