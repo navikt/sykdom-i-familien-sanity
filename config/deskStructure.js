@@ -18,7 +18,20 @@ export default () =>
                 .child(S.documentTypeList('ytelsePage')),
             S.listItem()
                 .title('Illustrasjoner')
-                .child(S.documentTypeList('illustration')),
+                .child(
+                    S.documentList()
+                        .title('Kategorier')
+                        .menuItems(S.documentTypeList('illustrationCategory').getMenuItems())
+                        .filter('_type == $type && !defined(parents)')
+                        .params({ type: 'illustrationCategory' })
+                        .child((categoryId) =>
+                            S.documentList()
+                                .title('Illustrasjoner')
+                                .menuItems(S.documentTypeList('illustration').getMenuItems())
+                                .filter('_type == $type && $categoryId == category._ref')
+                                .params({ type: 'illustration', categoryId })
+                        )
+                ),
             S.listItem()
                 .title('Illustrasjonskategorier')
                 .child(S.documentTypeList('illustrationCategory')),
