@@ -1,7 +1,7 @@
-import { defaultLanguage } from '../schemas/languages';
+import { defaultLocale } from '../schemas/locales';
 
 export const validateLocaleString = (obj) => {
-    if (obj === undefined || obj[defaultLanguage] === undefined || obj[defaultLanguage] === '') {
+    if (obj === undefined || obj[defaultLocale] === undefined || obj[defaultLocale] === '') {
         return 'Påkrevd felt';
     }
     return true;

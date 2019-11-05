@@ -1,4 +1,4 @@
-import supportedLanguages from '../languages';
+import supportedLocales from '../locales';
 
 const LocaleSimpleText = {
     name: 'localeSimpleText',
@@ -10,7 +10,7 @@ const LocaleSimpleText = {
             options: { collapsible: true }
         }
     ],
-    fields: supportedLanguages.map((lang) => ({
+    fields: supportedLocales.map((lang) => ({
         title: lang.title,
         name: lang.id,
         type: 'text',

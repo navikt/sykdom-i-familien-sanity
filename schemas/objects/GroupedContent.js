@@ -1,4 +1,4 @@
-import { defaultLanguage } from '../languages';
+import { defaultLocale } from '../locales';
 
 const GroupedContent = {
     title: 'Gruppert innhold',
@@ -38,7 +38,7 @@ const GroupedContent = {
         },
         prepare(props) {
             return {
-                title: props.title[defaultLanguage]
+                title: props.title[defaultLocale]
             };
         }
     }

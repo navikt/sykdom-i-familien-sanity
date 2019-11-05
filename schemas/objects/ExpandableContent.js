@@ -1,7 +1,7 @@
 import { validateLocaleString } from '../../utils/contentValidation';
 import { blockContentField } from '../parts/blockContentField';
 import { getLocaleContent } from '../../utils/getLocaleContent';
-import { defaultLanguage } from '../languages';
+import { defaultLocale } from '../locales';
 
 const ExpandableContent = {
     title: 'Ekspanderbart innhold',
@@ -33,7 +33,7 @@ const ExpandableContent = {
         },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLanguage)
+                title: getLocaleContent(props.title, defaultLocale)
             };
         }
     }

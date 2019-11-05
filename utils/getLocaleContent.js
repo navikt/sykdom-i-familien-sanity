@@ -1,12 +1,12 @@
-import { defaultLanguage } from '../schemas/languages';
+import { defaultLocale } from '../schemas/locales';
 
 export const getLocaleContent = (node) => {
     if (hasLocaleValue(node)) {
-        return node[defaultLanguage];
+        return node[defaultLocale];
     }
     return undefined;
 };
 
 export const hasLocaleValue = (node) => {
-    return node !== undefined && node[defaultLanguage] !== undefined && node[defaultLanguage] !== '';
+    return node !== undefined && node[defaultLocale] !== undefined && node[defaultLocale] !== '';
 };
