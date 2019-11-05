@@ -26,11 +26,11 @@ jobs:
       - name: npm install and test
         run: |
           npm ci
-#          npm run test
+          npm run test
         env:
           CI: true
 
-  build-code-and-deploy-studio:
+  build-and-deploy-studio:
     name: Build code and push docker image
     if: github.ref == 'refs/heads/dev-*' || github.ref == 'refs/heads/master' # Build and push docker if branch is either master or dev-*
     needs: test
