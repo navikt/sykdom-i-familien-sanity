@@ -1,22 +1,21 @@
 import supportedLocales from '../locales';
 
-const LocaleRichText = {
-    name: 'localeRichText',
+const OptionalLocaleTitle = {
+    name: 'optionalLocaleTitle',
     type: 'object',
     fieldsets: [
         {
-            name: 'translations',
             title: 'Oversettelser',
+            name: 'translations',
             options: { collapsible: true }
         }
     ],
     fields: supportedLocales.map((lang) => ({
         title: lang.title,
         name: lang.id,
-        type: 'array',
-        of: [{ type: 'block' }],
-        fieldset: lang.isDefault ? null : 'translations'
+        type: 'string',
+        fieldset: 'translations'
     }))
 };
 
-export default LocaleRichText;
+export default OptionalLocaleTitle;

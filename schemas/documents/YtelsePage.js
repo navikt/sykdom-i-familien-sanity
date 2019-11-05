@@ -1,5 +1,5 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
-import { defaultLanguage } from '../languages';
+import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 
 const YtelsePage = {
@@ -56,7 +56,7 @@ const YtelsePage = {
         select: { title: 'title', ytelse: 'ytelse' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLanguage)
+                title: getLocaleContent(props.title, defaultLocale)
             };
         }
     }

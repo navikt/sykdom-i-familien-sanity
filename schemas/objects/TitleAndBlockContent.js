@@ -1,4 +1,4 @@
-import { defaultLanguage } from '../languages';
+import { defaultLocale } from '../locales';
 import { hasLocaleValue } from '../../utils/getLocaleContent';
 
 const titleAndBlockContent = {
@@ -31,7 +31,7 @@ const titleAndBlockContent = {
         },
         prepare(props) {
             return {
-                title: hasLocaleValue(props.content.title) ? props.content.title[defaultLanguage] : 'Uten tittel'
+                title: hasLocaleValue(props.content.title) ? props.content.title[defaultLocale] : 'Uten tittel'
             };
         }
     }

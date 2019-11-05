@@ -1,4 +1,4 @@
-import { defaultLanguage } from '../languages';
+import { defaultLocale } from '../locales';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 
 const Link = {
@@ -24,7 +24,7 @@ const Link = {
         },
         prepare({ title, url }) {
             return {
-                title: getLocaleContent(title, defaultLanguage),
+                title: getLocaleContent(title, defaultLocale),
                 subtitle: url
             };
         }
