@@ -5,7 +5,14 @@
     },
     "api": {
         "projectId": "8ux9tyb9",
-        "dataset": "utvikling"
+        "dataset": "utvkling"
+    },
+    "env": {
+        "development": {
+            "api": {
+                "dataset": "fh"
+            }
+        }
     },
     "plugins": [
         "@sanity/base",
