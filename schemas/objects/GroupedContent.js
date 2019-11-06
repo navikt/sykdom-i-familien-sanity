@@ -38,7 +38,8 @@ const GroupedContent = {
         },
         prepare(props) {
             return {
-                title: props.title[defaultLocale]
+                title: props.title[defaultLocale],
+                subtitle: 'Gruppert innhold'
             };
         }
     }
