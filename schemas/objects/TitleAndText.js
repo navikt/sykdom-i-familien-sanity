@@ -26,25 +26,51 @@ function toPlainText(blocks = []) {
     );
 }
 
+const getLayoutSubtitle = (layout) => {
+    switch (layout) {
+        case 'expandablePanel':
+            return 'Ekspanderbart panel';
+        default:
+            return 'Vanlig tekstblokk';
+    }
+};
+
 const TitleAndText = {
     title: 'Tekstblokk',
     name: 'titleAndText',
     type: 'object',
+    fieldsets: [{ name: 'layout', title: 'Layout' }, { name: 'content', title: 'Innhold' }],
     fields: [
         {
-            title: 'Tittel (valgfri)',
+            title: 'Hvordan skal innholdet vises?',
+            name: 'layout',
+            fieldset: 'layout',
+            type: 'string',
+            options: {
+                layout: 'list',
+                list: [
+                    { title: 'Vanlig tekstblokk', value: 'normal', default: true },
+                    { title: 'Ekspanderbart panel', value: 'expandablePanel' }
+                ]
+            }
+        },
+        {
+            title: 'Tittel (valgfri ved vanlig tekstblokk)',
             name: 'title',
-            type: 'optionalLocaleTitle'
+            type: 'optionalLocaleTitle',
+            fieldset: 'content'
         },
         {
             title: 'Innhold',
             name: 'content',
-            type: 'localeRichText'
+            type: 'localeRichText',
+            fieldset: 'content'
         }
     ],
     preview: {
         select: {
             title: 'title',
+            layout: 'layout',
             content: 'content'
         },
         prepare(props) {
@@ -52,7 +78,8 @@ const TitleAndText = {
                 ? getLocaleContent(props.title, defaultLocale)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
             return {
-                title: shortenText(title) || 'Uten tittel'
+                title: shortenText(title) || 'Uten tittel',
+                subtitle: `Layout: ${getLayoutSubtitle(props.layout)}`
             };
         }
     }
