@@ -17,11 +17,14 @@ export default () =>
                 .title('Faktasider')
                 .child(S.documentTypeList('ytelsePage')),
             S.listItem()
-                .title('Illustrasjoner')
+                .title('Illustrasjoner etter kategori')
                 .child(
                     S.documentList()
                         .title('Kategorier')
-                        .menuItems(S.documentTypeList('illustrationCategory').getMenuItems())
+                        .menuItems(
+                            S.documentTypeList('illustrationCategory').getMenuItems(),
+                            S.documentTypeList('illustration').getMenuItems()
+                        )
                         .filter('_type == $type && !defined(parents)')
                         .params({ type: 'illustrationCategory' })
                         .child((categoryId) =>
@@ -32,6 +35,9 @@ export default () =>
                                 .params({ type: 'illustration', categoryId })
                         )
                 ),
+            S.listItem()
+                .title('Alle illustrasjoner')
+                .child(S.documentTypeList('illustration')),
             S.listItem()
                 .title('Illustrasjonskategorier')
                 .child(S.documentTypeList('illustrationCategory')),

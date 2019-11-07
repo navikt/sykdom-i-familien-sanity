@@ -1,6 +1,11 @@
 import { defaultLocale } from '../locales';
 import { getLocaleContent, hasLocaleValue } from '../../utils/getLocaleContent';
 
+const LAYOUTS = {
+    normal: 'normal',
+    expandablePanel: 'expandablePanel'
+};
+
 const shortenText = (text) => {
     if (text && typeof text === 'string' && text.length > 28) {
         return `${text.substr(0, 25)}...`;
@@ -30,29 +35,61 @@ const TitleAndText = {
     title: 'Tekstblokk',
     name: 'titleAndText',
     type: 'object',
+    fieldsets: [{ name: 'layout', title: 'Layout' }, { name: 'content', title: 'Innhold' }],
     fields: [
         {
-            title: 'Tittel (valgfri)',
+            title: 'Hvordan skal innholdet vises?',
+            name: 'layout',
+            fieldset: 'layout',
+            type: 'string',
+            options: {
+                layout: 'list',
+                list: [
+                    { title: 'Vanlig tekstblokk', value: 'normal' },
+                    { title: 'Ekspanderbart panel', value: 'expandablePanel' }
+                ]
+            }
+        },
+        {
+            title: 'Tittel (valgfri ved vanlig tekstblokk)',
             name: 'title',
-            type: 'optionalLocaleTitle'
+            type: 'localeString',
+            fieldset: 'content'
         },
         {
             title: 'Innhold',
             name: 'content',
-            type: 'localeRichText'
+            type: 'localeRichText',
+            fieldset: 'content'
         }
     ],
     preview: {
         select: {
             title: 'title',
+            layout: 'layout',
             content: 'content'
         },
         prepare(props) {
-            const title = hasLocaleValue(props.title)
+            const hasTitle = hasLocaleValue(props.title);
+            const title = hasTitle
                 ? getLocaleContent(props.title, defaultLocale)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
+
+            if (props.layout === LAYOUTS.expandablePanel) {
+                if (hasTitle) {
+                    return {
+                        title: shortenText(title),
+                        subtitle: 'Tekstblokk (ekspanderbart panel)'
+                    };
+                }
+                return {
+                    title: shortenText(title) || 'Uten tittel',
+                    subtitle: 'Tekstblokk (vises vanlig pga ingen tittel)'
+                };
+            }
             return {
-                title: shortenText(title) || 'Uten tittel'
+                title: shortenText(title) || 'Uten tittel',
+                subtitle: hasTitle ? `Tittel og tekst` : 'Tekstblokk'
             };
         }
     }

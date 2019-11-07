@@ -3,15 +3,6 @@ export const blockContentField = {
     name: 'content',
     type: 'array',
     of: [
-        {
-            type: 'block',
-            styles: [],
-            lists: [],
-            marks: {
-                decorators: [],
-                annotations: []
-            }
-        },
         { type: 'titleAndText' },
         { type: 'expandableContent' },
         {
