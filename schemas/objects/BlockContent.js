@@ -25,7 +25,8 @@ const BlockContent = {
                 {
                     type: 'illustration'
                 },
-                { type: 'groupedContent' }
+                { type: 'groupedContent' },
+                { type: 'veilederpanel' }
             ]
         }
     ],

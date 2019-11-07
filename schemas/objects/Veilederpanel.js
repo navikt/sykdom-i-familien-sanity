@@ -1,8 +1,12 @@
+import { getLocaleContent } from '../../utils/getLocaleContent';
+import { toPlainText } from '../../utils/previewUtils';
+import { defaultLocale } from '../locales';
+
 const Veilederpanel = {
     title: 'Veilederpanel',
     name: 'veilederpanel',
     type: 'object',
-    fieldsets: [{ name: 'veileder', title: 'Veileder' }],
+    fieldsets: [{ name: 'veileder', title: 'Utseende' }],
     fields: [
         {
             title: 'Ansikt',
@@ -10,7 +14,7 @@ const Veilederpanel = {
             type: 'string',
             fieldset: 'veileder',
             options: {
-                layout: 'radio',
+                layout: 'list',
                 list: [
                     { value: 'glad', title: 'Glad' },
                     { value: 'undrende', title: 'Undrende' },
@@ -24,9 +28,9 @@ const Veilederpanel = {
             type: 'string',
             fieldset: 'veileder',
             options: {
-                layout: 'radio',
+                layout: 'list',
                 list: [
-                    { value: 'normal', title: 'Normal', isDefault: true },
+                    { value: 'normal', title: 'Normal' },
                     { value: 'suksess', title: 'Suksess' },
                     { value: 'advarsel', title: 'Advarsel' },
                     { value: 'feilmelding', title: 'Feilmelding' }
@@ -34,11 +38,50 @@ const Veilederpanel = {
             }
         },
         {
+            title: 'Type',
+            name: 'type',
+            type: 'string',
+            fieldset: 'veileder',
+            options: {
+                layout: 'select',
+                list: [{ value: 'vanlig', title: 'Vanlig' }, { value: 'plakat', title: 'Plakat' }]
+            }
+        },
+        {
+            title: 'Kompakt',
+            name: 'kompakt',
+            type: 'string',
+            fieldset: 'veileder',
+            options: {
+                layout: 'select',
+                list: [{ value: 'kompakt', title: 'Kompakt' }, { value: 'vanlig', title: 'Vanlig' }]
+            }
+        },
+        {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText'
         }
-    ]
+    ],
+    preview: {
+        select: { content: 'content', type: 'type', kompakt: 'kompakt', ansikt: 'face' },
+        prepare(props) {
+            const subtitle = [];
+            if (props.type) {
+                subtitle.push(props.type);
+            }
+            if (props.kompakt) {
+                subtitle.push('kompakt');
+            }
+            if (props.ansikt) {
+                subtitle.push(props.ansikt);
+            }
+            return {
+                title: toPlainText(getLocaleContent(props.content, defaultLocale)),
+                subtitle: subtitle.length > 0 ? `Veilederpanel (${subtitle.join(', ')}` : 'Veilederpanel'
+            };
+        }
+    }
 };
 
 export default Veilederpanel;

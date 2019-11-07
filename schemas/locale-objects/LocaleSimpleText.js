@@ -2,6 +2,7 @@ import supportedLocales from '../locales';
 
 const LocaleSimpleText = {
     name: 'localeSimpleText',
+    title: 'Locale simple text',
     type: 'object',
     fieldsets: [
         {

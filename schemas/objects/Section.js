@@ -30,7 +30,8 @@ const SectionContentType = {
                     type: 'illustration'
                 },
                 { type: 'groupedContent' },
-                { type: 'expandableContent' }
+                { type: 'expandableContent' },
+                { type: 'veilederpanel' }
             ]
         }
     ],
