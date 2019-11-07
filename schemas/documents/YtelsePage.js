@@ -25,6 +25,13 @@ const YtelsePage = {
             }
         },
         {
+            title: 'Banner',
+            name: 'banner',
+            type: 'reference',
+            to: { type: 'illustration' }
+        },
+
+        {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
