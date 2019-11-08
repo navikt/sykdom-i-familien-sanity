@@ -15,7 +15,7 @@ const Textblock = {
     fields: [
         {
             title: 'Tittel',
-            description: 'Valgfri, men bør settes dersom en velger en visningsform som krever det.',
+            description: 'Valgfri, men bør settes dersom en velger å vise innholdet som ekspanderbart panel.',
             name: 'title',
             type: 'localeString'
         },

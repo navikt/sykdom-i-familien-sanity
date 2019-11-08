@@ -6,8 +6,13 @@ const Veilederpanel = {
     title: 'Veilederpanel',
     name: 'veilederpanel',
     type: 'object',
-    fieldsets: [{ name: 'veileder', title: 'Utseende' }],
+    fieldsets: [{ name: 'veileder', title: 'Visning', options: { collapsible: true } }],
     fields: [
+        {
+            title: 'Innhold',
+            name: 'content',
+            type: 'localeRichText'
+        },
         {
             title: 'Ansikt',
             name: 'face',
@@ -56,11 +61,6 @@ const Veilederpanel = {
                 layout: 'select',
                 list: [{ value: 'kompakt', title: 'Kompakt' }, { value: 'vanlig', title: 'Vanlig' }]
             }
-        },
-        {
-            title: 'Innhold',
-            name: 'content',
-            type: 'localeRichText'
         }
     ],
     preview: {

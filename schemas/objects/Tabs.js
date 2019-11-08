@@ -4,23 +4,13 @@ const Tabs = {
     title: 'Faner',
     name: 'tabs',
     type: 'object',
-    fieldsets: [{ name: 'render', title: 'Visningsform' }],
+    fieldsets: [{ name: 'render', title: 'Visning', options: { collapsible: true } }],
     fields: [
         {
             title: 'Tittel',
-            description: 'Synlig når fanene vises som nedtrekksliste.',
+            description: 'Valgfri. Vises kun på små skjermer og når visningen er satt til Nedtrekksliste',
             name: 'title',
             type: 'localeString'
-        },
-        {
-            title: 'Hvordan skal informasjonen vises',
-            name: 'presentation',
-            type: 'string',
-            fieldset: 'render',
-            options: {
-                layout: 'select',
-                list: [{ value: 'tabs', title: 'Faner' }, { value: 'dropdown', title: 'Nedtrekksliste' }]
-            }
         },
         {
             title: 'Enkeltfaner',
@@ -31,6 +21,16 @@ const Tabs = {
                     type: 'tab'
                 }
             ]
+        },
+        {
+            title: 'Hvordan skal informasjonen vises',
+            name: 'presentation',
+            type: 'string',
+            fieldset: 'render',
+            options: {
+                layout: 'select',
+                list: [{ value: 'tabs', title: 'Faner' }, { value: 'dropdown', title: 'Nedtrekksliste' }]
+            }
         }
     ],
     preview: {
