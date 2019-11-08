@@ -1,25 +1,26 @@
-import { validateLocaleString } from '../../utils/contentValidation';
+import { getLocaleContent } from '../../utils/getLocaleContent';
 import { contentBlocks } from '../contentBlocks';
 
-const SectionContentType = {
-    title: 'Sideseksjon',
-    name: 'section',
+const Tab = {
+    title: 'Fane',
+    name: 'tab',
     type: 'object',
     fields: [
         {
-            title: 'Tittel',
+            title: 'Fanetekst',
             name: 'title',
             type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            validation: (Rule) => Rule.required()
         },
         {
             title: 'Illustrasjon',
-            name: 'illustration',
+            name: 'tabIllustration',
             type: 'reference',
-            to: { type: 'illustration' }
+            to: [
+                {
+                    type: 'illustration'
+                }
+            ]
         },
         {
             title: 'Innholdsblokker',
@@ -34,10 +35,10 @@ const SectionContentType = {
         },
         prepare(props) {
             return {
-                title: props.title.nb
+                title: getLocaleContent(props.title)
             };
         }
     }
 };
 
-export default SectionContentType;
+export default Tab;

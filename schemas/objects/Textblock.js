@@ -7,14 +7,27 @@ const LAYOUTS = {
     expandablePanel: 'expandablePanel'
 };
 
-const TitleAndText = {
+const Textblock = {
     title: 'Tekstblokk',
-    name: 'titleAndText',
+    name: 'textblock',
     type: 'object',
-    fieldsets: [{ name: 'layout', title: 'Layout' }, { name: 'content', title: 'Innhold' }],
+    fieldsets: [{ name: 'layout', title: 'Visning', options: { collapsible: true } }],
     fields: [
         {
+            title: 'Tittel',
+            description: 'Valgfri, men bør settes dersom en velger en visningsform som krever det.',
+            name: 'title',
+            type: 'localeString'
+        },
+        {
+            title: 'Innhold',
+            name: 'content',
+            type: 'localeRichText'
+        },
+        {
             title: 'Hvordan skal innholdet vises?',
+            description:
+                'Ekspanderbart panel krever at en setter en tittel. Dersom ikke, vises teksten som en vanlig tekstblokk',
             name: 'layout',
             fieldset: 'layout',
             type: 'string',
@@ -25,18 +38,6 @@ const TitleAndText = {
                     { title: 'Ekspanderbart panel', value: 'expandablePanel' }
                 ]
             }
-        },
-        {
-            title: 'Tittel (valgfri ved vanlig tekstblokk)',
-            name: 'title',
-            type: 'localeString',
-            fieldset: 'content'
-        },
-        {
-            title: 'Innhold',
-            name: 'content',
-            type: 'localeRichText',
-            fieldset: 'content'
         }
     ],
     preview: {
@@ -65,10 +66,10 @@ const TitleAndText = {
             }
             return {
                 title: shortenText(title) || 'Uten tittel',
-                subtitle: hasTitle ? `Tittel og tekst` : 'Tekstblokk'
+                subtitle: hasTitle ? `Tittel og tekst` : 'Tekst uten tittel'
             };
         }
     }
 };
 
-export default TitleAndText;
+export default Textblock;

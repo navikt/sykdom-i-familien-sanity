@@ -6,7 +6,29 @@ const YtelsePage = {
     title: 'Faktaside',
     name: 'ytelsePage',
     type: 'document',
-    fieldsets: [{ name: 'internal', title: 'Internt' }, { name: 'intro', title: 'Introduksjon' }],
+    fieldsets: [
+        {
+            name: 'internal',
+            title: 'Ytelse og url',
+            options: {
+                collapsible: true
+            }
+        },
+        {
+            name: 'banner',
+            title: 'Sidetopp',
+            options: {
+                collapsible: true
+            }
+        },
+        {
+            name: 'inShort',
+            title: 'Kort fortalt',
+            options: {
+                collapsible: true
+            }
+        }
+    ],
     fields: [
         {
             title: 'Ytelse',
@@ -20,40 +42,48 @@ const YtelsePage = {
             title: 'slug',
             type: 'slug',
             name: 'slug',
+            fieldset: 'internal',
             options: {
                 source: 'title.nb'
             }
         },
         {
-            title: 'Banner',
-            name: 'banner',
-            type: 'reference',
-            to: { type: 'illustration' }
-        },
-
-        {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            fieldset: 'intro',
+            fieldset: 'banner',
+            validation: localeContentValidation
+        },
+        {
+            title: 'Bannerillustrasjon',
+            name: 'banner',
+            type: 'reference',
+            fieldset: 'banner',
+            to: { type: 'illustration' }
+        },
+        {
+            title: 'Tittel',
+            name: 'inShortTitle',
+            type: 'localeString',
+            fieldset: 'inShort',
             validation: localeContentValidation
         },
         {
             title: 'Illustrasjon',
             name: 'illustration',
             type: 'reference',
-            fieldset: 'intro',
+            fieldset: 'inShort',
             to: { type: 'illustration' }
         },
         {
-            title: 'Kort fortalt',
+            title: 'Innhold',
             name: 'inShort',
-            fieldset: 'intro',
+            fieldset: 'inShort',
             type: 'localeRichText',
             validation: localeContentValidation
         },
         {
-            title: 'Innholdsseksjoner',
+            title: 'Sideseksjoner',
             name: 'content',
             type: 'array',
             of: [{ type: 'section' }]

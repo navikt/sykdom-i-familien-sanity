@@ -1,13 +1,14 @@
 import { defaultLocale } from '../locales';
 
-const GroupedContent = {
-    title: 'Gruppert innhold',
-    name: 'groupedContent',
+const Tabs = {
+    title: 'Faner',
+    name: 'tabs',
     type: 'object',
-    fieldsets: [{ name: 'render', title: 'Presentasjon' }],
+    fieldsets: [{ name: 'render', title: 'Visningsform' }],
     fields: [
         {
             title: 'Tittel',
+            description: 'Synlig når fanene vises som nedtrekksliste.',
             name: 'title',
             type: 'localeString'
         },
@@ -17,17 +18,17 @@ const GroupedContent = {
             type: 'string',
             fieldset: 'render',
             options: {
-                layout: 'radio',
+                layout: 'select',
                 list: [{ value: 'tabs', title: 'Faner' }, { value: 'dropdown', title: 'Nedtrekksliste' }]
             }
         },
         {
-            title: 'Innhold',
+            title: 'Enkeltfaner',
             name: 'content',
             type: 'array',
             of: [
                 {
-                    type: 'titleAndBlockContent'
+                    type: 'tab'
                 }
             ]
         }
@@ -39,10 +40,10 @@ const GroupedContent = {
         prepare(props) {
             return {
                 title: props.title[defaultLocale],
-                subtitle: 'Gruppert innhold'
+                subtitle: 'Faner'
             };
         }
     }
 };
 
-export default GroupedContent;
+export default Tabs;
