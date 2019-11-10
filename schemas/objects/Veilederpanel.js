@@ -49,7 +49,7 @@ const Veilederpanel = {
             fieldset: 'veileder',
             options: {
                 layout: 'select',
-                list: [{ value: 'vanlig', title: 'Vanlig' }, { value: 'plakat', title: 'Plakat' }]
+                list: [{ value: 'normal', title: 'Normal' }, { value: 'plakat', title: 'Plakat' }]
             }
         },
         {
@@ -59,7 +59,7 @@ const Veilederpanel = {
             fieldset: 'veileder',
             options: {
                 layout: 'select',
-                list: [{ value: 'kompakt', title: 'Kompakt' }, { value: 'vanlig', title: 'Vanlig' }]
+                list: [{ value: 'kompakt', title: 'Kompakt' }, { value: 'normal', title: 'Normal' }]
             }
         }
     ],
