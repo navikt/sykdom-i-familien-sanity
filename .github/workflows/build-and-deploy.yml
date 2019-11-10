@@ -3,21 +3,21 @@ name: CI / CD
 on:
   push:
     paths-ignore:
-      - '**.md'
-      - '.gitignore'
-      - 'LICENCE'
-      - 'CODEOWNERS'
+      - "**.md"
+      - ".gitignore"
+      - "LICENCE"
+      - "CODEOWNERS"
     branches:
 
 jobs:
   test:
-      name: Test Code
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          node-version: [8.x, 10.x, 12.x]
+    name: Test Code
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
 
-      steps:
+    steps:
       - uses: actions/checkout@v1
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
@@ -32,7 +32,7 @@ jobs:
           CI: true
 
   build-and-deploy-studio:
-    name: Build code and push docker image
+    name: Build code and deploy to studio
     if: github.ref == 'refs/heads/dev-*' || github.ref == 'refs/heads/master' # Build and push docker if branch is either master or dev-*
     needs: test
     runs-on: ubuntu-latest
@@ -51,7 +51,7 @@ jobs:
           npm ci
           npm run deploy
         env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}          
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
       - name: upload artifact
         uses: actions/upload-artifact@v1
         with:
