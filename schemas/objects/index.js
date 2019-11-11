@@ -5,17 +5,7 @@ import Tabs from './Tabs';
 import Textblock from './Textblock';
 import FrontpagePageLink from './FrontpagePageLink';
 import FrontpageLink from './FrontpageLink';
-import ExpandableContent from './ExpandableContent';
 
-const objects = [
-    SectionContentType,
-    Veilederpanel,
-    ExpandableContent,
-    Tab,
-    Tabs,
-    Textblock,
-    FrontpagePageLink,
-    FrontpageLink
-];
+const objects = [SectionContentType, Veilederpanel, Tab, Tabs, Textblock, FrontpagePageLink, FrontpageLink];
 
 export default objects;
