@@ -56,7 +56,7 @@ const YtelsePage = {
         },
         {
             title: 'Introtekst',
-            name: 'bannerText',
+            name: 'intro',
             type: 'localeRichText',
             fieldset: 'banner',
             validation: localeContentValidation
