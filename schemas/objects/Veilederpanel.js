@@ -14,6 +14,19 @@ const Veilederpanel = {
             type: 'localeRichText'
         },
         {
+            title: 'Type',
+            name: 'veiledertype',
+            type: 'string',
+            fieldset: 'veileder',
+            options: {
+                layout: 'list',
+                list: [
+                    { value: 'normal', title: 'NAV-veileder' },
+                    { value: 'rasmus', title: 'Rasmus' }
+                ]
+            }
+        },
+        {
             title: 'Ansikt',
             name: 'face',
             type: 'string',
@@ -49,7 +62,10 @@ const Veilederpanel = {
             fieldset: 'veileder',
             options: {
                 layout: 'select',
-                list: [{ value: 'normal', title: 'Normal' }, { value: 'plakat', title: 'Plakat' }]
+                list: [
+                    { value: 'normal', title: 'Normal' },
+                    { value: 'plakat', title: 'Plakat' }
+                ]
             }
         },
         {
@@ -59,7 +75,10 @@ const Veilederpanel = {
             fieldset: 'veileder',
             options: {
                 layout: 'select',
-                list: [{ value: 'kompakt', title: 'Kompakt' }, { value: 'normal', title: 'Normal' }]
+                list: [
+                    { value: 'kompakt', title: 'Kompakt' },
+                    { value: 'normal', title: 'Normal' }
+                ]
             }
         }
     ],
