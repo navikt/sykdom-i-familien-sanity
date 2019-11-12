@@ -5,27 +5,9 @@
     },
     "api": {
         "projectId": "8ux9tyb9",
-        "dataset": "fh-test"
+        "dataset": "staging"
     },
-    "__experimental_spaces": [
-        {
-            "name": "staging",
-            "title": "Staging",
-            "default": true,
-            "api": {
-                "projectId": "8ux9tyb9",
-                "dataset": "staging"
-            }
-        },
-        {
-            "name": "production",
-            "title": "Production",
-            "api": {
-                "projectId": "8ux9tyb9",
-                "dataset": "production"
-            }
-        }
-    ],
+
     "plugins": [
         "@sanity/base",
         "@sanity/components",
