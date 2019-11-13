@@ -29,8 +29,17 @@ const Tabs = {
             fieldset: 'render',
             options: {
                 layout: 'select',
-                list: [{ value: 'tabs', title: 'Faner' }, { value: 'dropdown', title: 'Nedtrekksliste' }]
+                list: [
+                    { value: 'tabs', title: 'Faner' },
+                    { value: 'dropdown', title: 'Nedtrekksliste' }
+                ]
             }
+        },
+        {
+            title: 'Bakgrunnsfarge',
+            name: 'bgcolor',
+            type: 'string',
+            fieldset: 'render'
         }
     ],
     preview: {
