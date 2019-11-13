@@ -36,7 +36,8 @@ const Textblock = {
                 list: [
                     { title: 'Vanlig tekstblokk', value: 'normal' },
                     { title: 'Ingress', value: 'ingress' },
-                    { title: 'Ekspanderbart panel', value: 'expandablePanel' }
+                    { title: 'Ekspanderbart panel', value: 'expandablePanel' },
+                    { title: 'Steg med bullet', value: 'step' }
                 ]
             }
         }
