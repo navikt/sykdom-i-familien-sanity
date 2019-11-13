@@ -35,6 +35,7 @@ const Textblock = {
                 layout: 'list',
                 list: [
                     { title: 'Vanlig tekstblokk', value: 'normal' },
+                    { title: 'Ingress', value: 'ingress' },
                     { title: 'Ekspanderbart panel', value: 'expandablePanel' }
                 ]
             }
