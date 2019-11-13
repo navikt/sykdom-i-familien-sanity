@@ -14,7 +14,29 @@ const LocaleRichText = {
         title: lang.title,
         name: lang.id,
         type: 'array',
-        of: [{ type: 'block' }],
+        of: [
+            {
+                type: 'block',
+                styles: [
+                    {
+                        title: 'Normal',
+                        value: 'normal'
+                    },
+                    {
+                        title: 'Tittel',
+                        value: 'title'
+                    },
+                    {
+                        title: 'Ingress',
+                        value: 'ingress'
+                    },
+                    {
+                        title: 'Checklist',
+                        value: 'checklist'
+                    }
+                ]
+            }
+        ],
         fieldset: lang.isDefault ? null : 'translations'
     }))
 };
