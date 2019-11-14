@@ -13,16 +13,6 @@ const Tab = {
             validation: (Rule) => Rule.required()
         },
         {
-            title: 'Illustrasjon',
-            name: 'tabIllustration',
-            type: 'reference',
-            to: [
-                {
-                    type: 'illustration'
-                }
-            ]
-        },
-        {
             title: 'Innholdstittel',
             name: 'contentTitle',
             type: 'localeString'
