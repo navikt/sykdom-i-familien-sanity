@@ -23,6 +23,11 @@ const Tab = {
             ]
         },
         {
+            title: 'Innholdstittel',
+            name: 'contentTitle',
+            type: 'localeString'
+        },
+        {
             title: 'Innholdsblokker',
             name: 'content',
             type: 'array',
