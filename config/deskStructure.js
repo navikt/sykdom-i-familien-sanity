@@ -1,4 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder';
+import React from 'react';
+import PublishComponent from '../components/PublishComponent';
 
 export default () =>
     S.list()
@@ -43,5 +45,13 @@ export default () =>
                 .child(S.documentTypeList('illustrationCategory')),
             S.listItem()
                 .title('Lenker')
-                .child(S.documentTypeList('link'))
+                .child(S.documentTypeList('link')),
+            S.divider(),
+            S.listItem()
+                .title('Administrasjon')
+                .child(
+                    S.component()
+                        .title('Forhåndsvisning og produksjon')
+                        .component(PublishComponent)
+                )
         ]);
