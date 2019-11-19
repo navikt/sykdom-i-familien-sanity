@@ -2,8 +2,8 @@ import * as React from 'react';
 import PublishComponent from './PublishComponent';
 
 const BuildEnvEventType = {
-    staging: 'trigger_gatsby_build',
-    production: 'trigger_gatsby_build_production'
+    staging: 'trigger_gatsby_build_staging',
+    production: 'trigger_gatsby_build_prod'
 };
 
 export default class AdminPage extends React.Component {
