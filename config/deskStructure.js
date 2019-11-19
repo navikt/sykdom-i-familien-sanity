@@ -1,6 +1,6 @@
 import S from '@sanity/desk-tool/structure-builder';
 import React from 'react';
-import PublishComponent from '../components/PublishComponent';
+import AdminPage from '../components/AdminPage';
 
 export default () =>
     S.list()
@@ -52,6 +52,6 @@ export default () =>
                 .child(
                     S.component()
                         .title('Forhåndsvisning og produksjon')
-                        .component(PublishComponent)
+                        .component(AdminPage)
                 )
         ]);
