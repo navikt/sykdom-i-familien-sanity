@@ -1,9 +1,16 @@
 import * as React from 'react';
 import PublishComponent from './PublishComponent';
 
-const BuildEnvEventType = {
-    staging: 'trigger_gatsby_build_staging',
-    production: 'trigger_gatsby_build_prod'
+const stagingPayload = {
+    ref: 'staging',
+    environment: 'dev-sbs',
+    required_context: []
+};
+
+const productionPayload = {
+    ref: 'master',
+    environment: 'prod-sbs',
+    required_context: []
 };
 
 export default class AdminPage extends React.Component {
@@ -12,12 +19,12 @@ export default class AdminPage extends React.Component {
             <div style={{ padding: ' 1rem' }}>
                 <PublishComponent
                     title="Staging"
-                    data={{ event_type: BuildEnvEventType.staging }}
+                    data={stagingPayload}
                     description="Oppdater staging-miljøet med alt publisert innhold fra Sanity staging datasettet."
                 />
                 <PublishComponent
                     title="Produksjon"
-                    data={{ event_type: BuildEnvEventType.production }}
+                    data={productionPayload}
                     description="Oppdater produksjonsmiljøet med alt publisert innhold fra Sanity production datasettet."
                 />
             </div>

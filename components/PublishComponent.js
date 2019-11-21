@@ -9,10 +9,11 @@ import LoadingSpinner from 'part:@sanity/components/loading/spinner';
 import Message from './Message';
 
 const triggerBuild = (data, token, cbSuccess, cbError) => {
-    const url = 'https://api.github.com/repos/navikt/sykdom-i-familien/dispatches';
+    const url = 'https://api.github.com/repos/navikt/sykdom-i-familien/deployments';
     superagent
         .post(url)
-        .set('Accept', 'application/vnd.github.everest-preview+json')
+        .set('Accept', 'application/vnd.github.ant-man-preview+json')
+        .set('Content-Type', 'application/json')
         .set('Authorization', `token ${token}`)
         .send(data)
         .then(() => {
