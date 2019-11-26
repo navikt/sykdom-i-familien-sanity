@@ -9,7 +9,7 @@ const YtelsePage = {
     fieldsets: [
         {
             name: 'internal',
-            title: 'Ytelse og url',
+            title: 'Oppsett',
             options: {
                 collapsible: true
             }
@@ -45,6 +45,15 @@ const YtelsePage = {
             fieldset: 'internal',
             options: {
                 source: 'title.nb'
+            }
+        },
+        {
+            title: 'Tilgjengelig på nav.no',
+            type: 'boolean',
+            name: 'isPublic',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox'
             }
         },
         {

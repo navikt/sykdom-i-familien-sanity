@@ -4,12 +4,14 @@ import PublishComponent from './PublishComponent';
 const stagingPayload = {
     ref: 'staging',
     environment: 'dev-sbs',
+    auto_merge: false,
     required_context: []
 };
 
 const productionPayload = {
     ref: 'master',
     environment: 'prod-sbs',
+    auto_merge: false,
     required_context: []
 };
 
