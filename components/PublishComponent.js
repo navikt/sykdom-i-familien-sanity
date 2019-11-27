@@ -87,7 +87,7 @@ export default class EnvPublish extends React.Component {
                             </Message>
                         )}
                         {done === true && error === undefined && (
-                            <Message>Ny versjon er på vei ut. Dette kan ta opp til ett minutt.</Message>
+                            <Message>Ny versjon er på vei ut. Dette tar 4-5 minutter.</Message>
                         )}
                     </>
                 )}
