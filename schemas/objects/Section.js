@@ -1,4 +1,4 @@
-import { validateLocaleString } from '../../utils/contentValidation';
+import { localeContentValidation } from '../../utils/contentValidation';
 import { contentBlocks } from '../contentBlocks';
 
 const SectionContentType = {
@@ -10,10 +10,7 @@ const SectionContentType = {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            validation: localeContentValidation
         },
         {
             title: 'Illustrasjon',

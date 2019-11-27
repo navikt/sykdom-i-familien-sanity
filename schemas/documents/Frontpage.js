@@ -1,5 +1,6 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
+import { localeContentValidation } from '../../utils/contentValidation';
 
 const Frontpage = {
     title: 'Forside',
@@ -22,19 +23,22 @@ const Frontpage = {
             description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
             type: 'localeSimpleText',
             name: 'metadescription',
-            fieldset: 'internal'
+            fieldset: 'internal',
+            validation: localeContentValidation
         },
         {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            fieldset: 'introduction'
+            fieldset: 'introduction',
+            validation: localeContentValidation
         },
         {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
-            fieldset: 'introduction'
+            fieldset: 'introduction',
+            validation: localeContentValidation
         },
         {
             title: 'Illustrasjon',
@@ -47,12 +51,6 @@ const Frontpage = {
             name: 'frontpageStories',
             type: 'array',
             of: [{ type: 'frontpagePageLink' }, { type: 'frontpageLink' }]
-        },
-        {
-            title: 'Relatert informasjon',
-            name: 'related',
-            type: 'array',
-            of: [{ type: 'reference', to: { type: 'link' } }]
         }
     ],
     preview: {

@@ -1,5 +1,5 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
-import { validateLocaleString } from '../../utils/contentValidation';
+import { localeContentValidation } from '../../utils/contentValidation';
 
 const FrontpageLink = {
     title: 'Ekstern lenke',
@@ -11,10 +11,7 @@ const FrontpageLink = {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            validation: localeContentValidation
         },
 
         {

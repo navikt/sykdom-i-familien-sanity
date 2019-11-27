@@ -1,4 +1,4 @@
-import { validateLocaleString } from '../../utils/contentValidation';
+import { localeContentValidation } from '../../utils/contentValidation';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 
@@ -11,19 +11,13 @@ const ExpandableContent = {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            validation: localeContentValidation
         },
         {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText',
-            validation: (Rule) =>
-                Rule.custom((obj) => {
-                    return validateLocaleString(obj, true);
-                })
+            validation: localeContentValidation
         }
     ],
     preview: {

@@ -53,7 +53,8 @@ const YtelsePage = {
             description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
             type: 'localeSimpleText',
             name: 'metadescription',
-            fieldset: 'internal'
+            fieldset: 'internal',
+            validation: localeContentValidation
         },
         {
             title: 'Tilgjengelig på nav.no',
