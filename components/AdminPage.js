@@ -19,11 +19,11 @@ export default class AdminPage extends React.Component {
     render() {
         return (
             <div style={{ padding: ' 1rem' }}>
-                <PublishComponent
+                {/* <PublishComponent
                     title="Staging"
                     data={stagingPayload}
                     description="Oppdater staging-miljøet med alt publisert innhold fra Sanity staging datasettet."
-                />
+                /> */}
                 <PublishComponent
                     title="Produksjon"
                     data={productionPayload}

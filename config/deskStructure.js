@@ -53,5 +53,8 @@ export default () =>
                     S.component()
                         .title('Forhåndsvisning og produksjon')
                         .component(AdminPage)
-                )
+                ),
+            S.listItem()
+                .title('Ytelser')
+                .child(S.documentTypeList('ytelse'))
         ]);
