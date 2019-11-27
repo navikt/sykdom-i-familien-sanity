@@ -15,6 +15,7 @@ const LocaleSimpleText = {
         title: lang.title,
         name: lang.id,
         type: 'text',
+        rows: 5,
         fieldset: lang.isDefault ? null : 'translations'
     }))
 };
