@@ -6,8 +6,24 @@ const Frontpage = {
     name: 'frontpage',
     type: 'document',
     id: 'forside',
-    fieldsets: [{ title: 'Introduksjon', name: 'introduction' }],
+    fieldsets: [
+        {
+            name: 'internal',
+            title: 'Metadata',
+            options: {
+                collapsible: true
+            }
+        },
+        { title: 'Introduksjon', name: 'introduction' }
+    ],
     fields: [
+        {
+            title: 'meta-description',
+            description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
+            type: 'localeSimpleText',
+            name: 'metadescription',
+            fieldset: 'internal'
+        },
         {
             title: 'Tittel',
             name: 'title',

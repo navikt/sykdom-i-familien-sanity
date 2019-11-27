@@ -45,7 +45,15 @@ const YtelsePage = {
             fieldset: 'internal',
             options: {
                 source: 'title.nb'
-            }
+            },
+            validation: (Rule) => Rule.required()
+        },
+        {
+            title: 'meta-description',
+            description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
+            type: 'localeSimpleText',
+            name: 'metadescription',
+            fieldset: 'internal'
         },
         {
             title: 'Tilgjengelig på nav.no',
