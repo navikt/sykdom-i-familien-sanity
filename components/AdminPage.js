@@ -2,7 +2,7 @@ import * as React from 'react';
 import PublishComponent from './PublishComponent';
 
 const stagingPayload = {
-    ref: 'staging',
+    ref: 'master',
     environment: 'dev-sbs',
     auto_merge: false,
     required_context: []
