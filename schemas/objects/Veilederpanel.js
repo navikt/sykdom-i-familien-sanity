@@ -21,7 +21,8 @@ const Veilederpanel = {
             options: {
                 layout: 'list',
                 list: [
-                    { value: 'normal', title: 'NAV-veileder' },
+                    { value: 'normal', title: 'NAV-veileder - ramme' },
+                    { value: 'temafarge', title: 'NAV-veileder - farget bakgrunn' },
                     { value: 'rasmus', title: 'Rasmus' }
                 ]
             }
@@ -83,7 +84,7 @@ const Veilederpanel = {
         }
     ],
     preview: {
-        select: { content: 'content', type: 'type', kompakt: 'kompakt', ansikt: 'face' },
+        select: { content: 'content', type: 'veiledertype', kompakt: 'kompakt', ansikt: 'face' },
         prepare(props) {
             const subtitle = [];
             if (props.type) {
@@ -97,7 +98,7 @@ const Veilederpanel = {
             }
             return {
                 title: toPlainText(getLocaleContent(props.content, defaultLocale)),
-                subtitle: subtitle.length > 0 ? `Veilederpanel (${subtitle.join(', ')}` : 'Veilederpanel'
+                subtitle: subtitle.length > 0 ? `Veilederpanel (${subtitle.join(', ')})` : 'Veilederpanel'
             };
         }
     }
