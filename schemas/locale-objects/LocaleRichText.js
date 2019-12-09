@@ -33,6 +33,10 @@ const LocaleRichText = {
                     {
                         title: 'Checklist',
                         value: 'checklist'
+                    },
+                    {
+                        title: 'Knapp',
+                        value: 'button'
                     }
                 ]
             }
