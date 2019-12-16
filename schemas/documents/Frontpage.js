@@ -27,6 +27,15 @@ const Frontpage = {
             validation: localeContentValidation
         },
         {
+            title: 'Vis språkvalg',
+            type: 'boolean',
+            name: 'showLanguageToggle',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox'
+            }
+        },
+        {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
