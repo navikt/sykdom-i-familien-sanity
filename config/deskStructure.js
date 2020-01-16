@@ -1,5 +1,4 @@
 import S from '@sanity/desk-tool/structure-builder';
-import React from 'react';
 import AdminPage from '../components/AdminPage';
 
 export default () =>
@@ -10,14 +9,18 @@ export default () =>
                 .title('Forside')
                 .child(
                     S.editor()
-                        .title('Forside')
+                        .title('Forside - nav.no')
                         .id('frontpage')
                         .schemaType('frontpage')
                         .documentId('frontpage-config')
                 ),
             S.listItem()
                 .title('Faktasider')
-                .child(S.documentTypeList('ytelsePage')),
+                .child(
+                    S.documentList()
+                        .title('Faktasider - nav.no')
+                        .filter('_type == "ytelsePage" && isPublic == true')
+                ),
             S.listItem()
                 .title('Illustrasjoner etter kategori')
                 .child(
@@ -47,6 +50,16 @@ export default () =>
                 .title('Lenker')
                 .child(S.documentTypeList('link')),
             S.divider(),
+            S.listItem()
+                .title('Faktasider - kladd, kun internt')
+                .child(
+                    S.documentList()
+                        .title('Kladd')
+                        .filter('_type == "ytelsePage" && isPublic == false')
+                ),
+
+            S.divider(),
+
             S.listItem()
                 .title('Administrasjon')
                 .child(
