@@ -51,11 +51,11 @@ export default () =>
                 .child(S.documentTypeList('link')),
             S.divider(),
             S.listItem()
-                .title('Faktasider - kladd, kun internt')
+                .title('Nye faktasider - kun internt')
                 .child(
                     S.documentList()
                         .title('Kladd')
-                        .filter('_type == "ytelsePage" && isPublic == false')
+                        .filter('_type == "ytelsePage" && isPublic != true')
                 ),
 
             S.divider(),
