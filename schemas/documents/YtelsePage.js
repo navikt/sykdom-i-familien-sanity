@@ -1,8 +1,11 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
+import YtelsePageIcon from '../../components/YtelsePageIcon';
+import React from 'react';
 
 const YtelsePage = {
+    icon: YtelsePageIcon,
     title: 'Faktaside',
     name: 'ytelsePage',
     type: 'document',
@@ -124,10 +127,12 @@ const YtelsePage = {
         }
     ],
     preview: {
-        select: { title: 'title', ytelse: 'ytelse' },
+        select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale)
+                title: getLocaleContent(props.title, defaultLocale),
+                subtitle: props.isPublic === false ? 'Kladd' : undefined,
+                media: <YtelsePageIcon isPublic={props.isPublic} />
             };
         }
     }
