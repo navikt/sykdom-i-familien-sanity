@@ -120,6 +120,13 @@ const YtelsePage = {
             validation: localeContentValidation
         },
         {
+            title: 'Ekstra komponenter',
+            name: 'inShortEkstraKomponenter',
+            type: 'array',
+            fieldset: 'inShort',
+            of: [{type: 'infopanelMedKnapper'}, {type: 'textblock'}]
+        },
+        {
             title: 'Sideseksjoner',
             name: 'content',
             type: 'array',

@@ -7,3 +7,4 @@ dist
 production.tar.gz
 staging.tar.gz
 *-*-*-prod.tar.gz
+.idea
