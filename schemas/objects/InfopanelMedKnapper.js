@@ -5,7 +5,6 @@ const InfopanelMedKnapperContentType = {
     fields: [
         {
             title: 'Tittel',
-            description: 'Valgfri, men bør settes dersom en velger å vise innholdet som ekspanderbart panel.',
             name: 'title',
             type: 'localeString'
         },
@@ -23,14 +22,13 @@ const InfopanelMedKnapperContentType = {
         }
     ],
     preview: {
-        select: { tittel: 'title'},
+        select: { title: 'title'},
         prepare(props) {
             return {
                 title: "Infopanel med knapper",
-                subtitle: props.tittel.nb
+                subtitle: props.title.nb
             }
         }
-
     }
 };
 
