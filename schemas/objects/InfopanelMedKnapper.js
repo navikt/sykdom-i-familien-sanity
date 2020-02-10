@@ -18,7 +18,8 @@ const InfopanelMedKnapperContentType = {
             title: 'Link Knapper',
             name: 'linkKnapper',
             type: 'array',
-            of: [{type: 'link'}]
+            of: [{type: 'link'}],
+            validation: Rule => Rule.required().max(2)
         }
     ],
     preview: {
