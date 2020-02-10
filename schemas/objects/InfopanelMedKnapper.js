@@ -1,5 +1,5 @@
 const InfopanelMedKnapperContentType = {
-    title: 'Infopanel med knapper',
+    title: 'Infopanel med Lenkeknapper',
     name: 'infopanelMedKnapper',
     type: 'object',
     fields: [
@@ -14,8 +14,8 @@ const InfopanelMedKnapperContentType = {
             type: 'localeRichText'
         },
         {
-            title: 'Link Knapper',
-            name: 'linkKnapper',
+            title: 'Lenkeknapper',
+            name: 'lenkeknapper',
             type: 'array',
             of: [{type: 'link'}],
             validation: Rule => Rule.required().max(2)
@@ -25,7 +25,7 @@ const InfopanelMedKnapperContentType = {
         select: { title: 'title'},
         prepare(props) {
             return {
-                title: "Infopanel med knapper",
+                title: "Infopanel med Lenkeknapper",
                 subtitle: props.title.nb
             }
         }
