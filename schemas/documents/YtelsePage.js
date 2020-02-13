@@ -124,7 +124,7 @@ const YtelsePage = {
             name: 'inShortEkstraKomponenter',
             type: 'array',
             fieldset: 'inShort',
-            of: [{type: 'infopanelMedKnapper'}, {type: 'textblock'}]
+            of: [{ type: 'infopanelMedKnapper' }]
         },
         {
             title: 'Sideseksjoner',
