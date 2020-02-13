@@ -5,12 +5,17 @@ import styles from './IframePreview.css';
 
 const assembleProjectUrl = ({ displayed, options }) => {
     const { slug } = displayed;
-    const { previewURL } = options;
+    const { previewURL, locale = 'nb' } = options;
+
+    if (options.isFrontpage) {
+        return `${previewURL}/${locale}/`;
+    }
+
     if (!slug || !previewURL) {
         console.warn('Missing slug or previewURL', { slug, previewURL });
         return '';
     }
-    return `${previewURL}/nb/${slug.current}`;
+    return `${previewURL}/${locale}/${slug.current}`;
 };
 
 class IframePreview extends React.PureComponent {

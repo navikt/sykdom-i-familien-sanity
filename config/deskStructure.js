@@ -14,13 +14,29 @@ export default () =>
         .title('Sykdom i familien')
         .items([
             S.listItem()
-                .title('Forside')
+                .title('Forsiden')
                 .child(
                     S.editor()
                         .title('Forside - nav.no')
                         .id('frontpage')
                         .schemaType('frontpage')
                         .documentId('frontpage-config')
+                        .views([
+                            S.view
+                                .form()
+                                .icon(EditIcon)
+                                .title('Redigering'),
+                            S.view
+                                .component(IframePreview)
+                                .options({ previewURL, isFrontpage: true, locale: 'nb' })
+                                .title('Forhåndsvisning NB')
+                                .icon(EyeIcon),
+                            S.view
+                                .component(IframePreview)
+                                .options({ previewURL, isFrontpage: true, locale: 'nn' })
+                                .title('Forhåndsvisning NN')
+                                .icon(EyeIcon)
+                        ])
                 ),
             S.listItem()
                 .title('Faktasider')
@@ -39,12 +55,62 @@ export default () =>
                                         .title('Redigering'),
                                     S.view
                                         .component(IframePreview)
-                                        .options({ previewURL })
-                                        .title('Forhåndsvisning')
+                                        .options({ previewURL, locale: 'nb' })
+                                        .title('Forhåndsvisning NB')
+                                        .icon(EyeIcon),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nn' })
+                                        .title('Forhåndsvisning NN')
                                         .icon(EyeIcon)
                                 ])
                         )
                 ),
+            S.divider(),
+            S.listItem()
+                .title('Nye faktasider (ikke lansert på nav.no)')
+                .child(
+                    S.documentList()
+                        .title('Kladd')
+                        .filter('_type == "ytelsePage" && isPublic != true')
+                        .child((documentId) =>
+                            S.document(document)
+                                .documentId(documentId)
+                                .schemaType('ytelsePage')
+                                .views([
+                                    S.view
+                                        .form()
+                                        .icon(EditIcon)
+                                        .title('Redigering'),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nb' })
+                                        .title('Forhåndsvisning NB')
+                                        .icon(EyeIcon),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nn' })
+                                        .title('Forhåndsvisning NN')
+                                        .icon(EyeIcon)
+                                ])
+                        )
+                ),
+            S.divider(),
+            S.listItem()
+                .title('Illustrasjoner')
+                .child(S.documentTypeList('illustration')),
+            S.divider(),
+
+            S.listItem()
+                .title('Administrasjon')
+                .child(
+                    S.component()
+                        .title('Forhåndsvisning og produksjon')
+                        .component(AdminPage)
+                ),
+            S.listItem()
+                .title('Ytelser')
+                .child(S.documentTypeList('ytelse')),
             S.listItem()
                 .title('Illustrasjoner etter kategori')
                 .child(
@@ -65,49 +131,9 @@ export default () =>
                         )
                 ),
             S.listItem()
-                .title('Alle illustrasjoner')
-                .child(S.documentTypeList('illustration')),
-            S.listItem()
                 .title('Illustrasjonskategorier')
                 .child(S.documentTypeList('illustrationCategory')),
             S.listItem()
                 .title('Lenker')
-                .child(S.documentTypeList('link')),
-            S.divider(),
-            S.listItem()
-                .title('Nye faktasider - kun internt')
-                .child(
-                    S.documentList()
-                        .title('Kladd')
-                        .filter('_type == "ytelsePage" && isPublic != true')
-                        .child((documentId) =>
-                            S.document(document)
-                                .documentId(documentId)
-                                .schemaType('ytelsePage')
-                                .views([
-                                    S.view
-                                        .form()
-                                        .icon(EditIcon)
-                                        .title('Redigering'),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL })
-                                        .title('Forhåndsvisning')
-                                        .icon(EyeIcon)
-                                ])
-                        )
-                ),
-
-            S.divider(),
-
-            S.listItem()
-                .title('Administrasjon')
-                .child(
-                    S.component()
-                        .title('Forhåndsvisning og produksjon')
-                        .component(AdminPage)
-                ),
-            S.listItem()
-                .title('Ytelser')
-                .child(S.documentTypeList('ytelse'))
+                .child(S.documentTypeList('link'))
         ]);
