@@ -6,6 +6,7 @@ import Textblock from './Textblock';
 import FrontpagePageLink from './FrontpagePageLink';
 import FrontpageLink from './FrontpageLink';
 import InfopanelMedKnapperContentType from './InfopanelMedKnapper';
+import RasmusVeilederpanel from './RasmusVeilederpanel';
 
 const objects = [
     SectionContentType,
@@ -15,7 +16,8 @@ const objects = [
     Textblock,
     FrontpagePageLink,
     FrontpageLink,
-    InfopanelMedKnapperContentType
+    InfopanelMedKnapperContentType,
+    RasmusVeilederpanel
 ];
 
 export default objects;

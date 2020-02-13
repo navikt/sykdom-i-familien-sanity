@@ -4,5 +4,6 @@ export const contentBlocks = [
         type: 'illustration'
     },
     { type: 'tabs' },
-    { type: 'veilederpanel' }
+    { type: 'veilederpanel' },
+    { type: 'rasmusVeilederpanel' }
 ];
