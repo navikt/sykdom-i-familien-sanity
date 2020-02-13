@@ -1,10 +1,16 @@
+import React from 'react';
+
 import S from '@sanity/desk-tool/structure-builder';
 import AdminPage from '../components/AdminPage';
 
 import EyeIcon from 'part:@sanity/base/eye-icon';
 import EditIcon from 'part:@sanity/base/edit-icon';
+import YtelsePageIcon from '../components/icons/YtelsePageIcon';
+import AdminIcon from '../components/icons/AdminIcon';
 
 import IframePreview from '../components/previews/iframe/IframePreview';
+import IllustrationIcon from '../components/icons/IllustrationIcon';
+import HomeIcon from '../components/icons/HomeIcon';
 
 const remoteURL = 'https://sykdom-i-familien-1131286467.gtsb.io';
 const previewURL = remoteURL;
@@ -37,7 +43,8 @@ export default () =>
                                 .title('Forhåndsvisning NN')
                                 .icon(EyeIcon)
                         ])
-                ),
+                )
+                .icon(HomeIcon),
             S.listItem()
                 .title('Faktasider')
                 .child(
@@ -64,9 +71,16 @@ export default () =>
                                         .title('Forhåndsvisning NN')
                                         .icon(EyeIcon)
                                 ])
+                                .icon(YtelsePageIcon)
                         )
-                ),
+                )
+                .icon(() => <YtelsePageIcon isPublic={true} />),
+            S.listItem()
+                .title('Illustrasjoner')
+                .child(S.documentTypeList('illustration'))
+                .icon(IllustrationIcon),
             S.divider(),
+
             S.listItem()
                 .title('Nye faktasider (ikke lansert på nav.no)')
                 .child(
@@ -94,11 +108,8 @@ export default () =>
                                         .icon(EyeIcon)
                                 ])
                         )
-                ),
-            S.divider(),
-            S.listItem()
-                .title('Illustrasjoner')
-                .child(S.documentTypeList('illustration')),
+                )
+                .icon(() => <YtelsePageIcon isPublic={false} />),
             S.divider(),
 
             S.listItem()
@@ -107,7 +118,8 @@ export default () =>
                     S.component()
                         .title('Forhåndsvisning og produksjon')
                         .component(AdminPage)
-                ),
+                )
+                .icon(AdminIcon),
             S.listItem()
                 .title('Ytelser')
                 .child(S.documentTypeList('ytelse')),

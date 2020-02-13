@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const YtelsePageIcon = (props) => {
     return (
-        <svg width={25} height={34} viewBox="0 0 25 34" {...props}>
+        <svg width={25} height={34} viewBox="0 0 25 34" {...props} style={{ zoom: 0.9 }}>
             <title>{'Group'}</title>
             <defs>
                 <path
