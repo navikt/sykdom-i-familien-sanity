@@ -2,7 +2,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './IframePreview.css';
-// import resolveProductionUrl from '../resolveProductionUrl';
 
 const assembleProjectUrl = ({ displayed, options }) => {
     const { slug } = displayed;

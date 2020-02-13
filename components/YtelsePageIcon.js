@@ -1,8 +1,6 @@
 import * as React from 'react';
 
 const YtelsePageIcon = (props) => {
-    // const fill = props.isPublic === false ? '#3385D1' : '#000000';
-
     return (
         <svg width={25} height={34} viewBox="0 0 25 34" {...props}>
             <title>{'Group'}</title>
