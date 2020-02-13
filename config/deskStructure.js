@@ -1,6 +1,14 @@
 import S from '@sanity/desk-tool/structure-builder';
 import AdminPage from '../components/AdminPage';
 
+import EyeIcon from 'part:@sanity/base/eye-icon';
+import EditIcon from 'part:@sanity/base/edit-icon';
+
+import IframePreview from '../components/previews/iframe/IframePreview';
+
+const remoteURL = 'https://sykdom-i-familien-1131286467.gtsb.io';
+const previewURL = remoteURL;
+
 export default () =>
     S.list()
         .title('Sykdom i familien')
@@ -20,6 +28,22 @@ export default () =>
                     S.documentList()
                         .title('Faktasider - nav.no')
                         .filter('_type == "ytelsePage" && isPublic == true')
+                        .child((documentId) =>
+                            S.document(document)
+                                .documentId(documentId)
+                                .schemaType('ytelsePage')
+                                .views([
+                                    S.view
+                                        .form()
+                                        .icon(EditIcon)
+                                        .title('Redigering'),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL })
+                                        .title('Forhåndsvisning')
+                                        .icon(EyeIcon)
+                                ])
+                        )
                 ),
             S.listItem()
                 .title('Illustrasjoner etter kategori')
@@ -56,6 +80,22 @@ export default () =>
                     S.documentList()
                         .title('Kladd')
                         .filter('_type == "ytelsePage" && isPublic != true')
+                        .child((documentId) =>
+                            S.document(document)
+                                .documentId(documentId)
+                                .schemaType('ytelsePage')
+                                .views([
+                                    S.view
+                                        .form()
+                                        .icon(EditIcon)
+                                        .title('Redigering'),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL })
+                                        .title('Forhåndsvisning')
+                                        .icon(EyeIcon)
+                                ])
+                        )
                 ),
 
             S.divider(),
