@@ -1,8 +1,8 @@
+import React from 'react';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
-import YtelsePageIcon from '../../components/YtelsePageIcon';
-import React from 'react';
+import YtelsePageIcon from '../../components/icons/YtelsePageIcon';
 
 const YtelsePage = {
     icon: YtelsePageIcon,
