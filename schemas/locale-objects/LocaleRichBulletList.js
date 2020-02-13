@@ -20,7 +20,19 @@ const LocaleRichText = {
                 styles: [],
                 marks: {
                     decorators: [{ title: 'Strong', value: 'strong' }],
-                    annotations: []
+                    annotations: [
+                        {
+                            name: 'link',
+                            type: 'object',
+                            title: 'link',
+                            fields: [
+                                {
+                                    name: 'url',
+                                    type: 'url'
+                                }
+                            ]
+                        }
+                    ]
                 },
                 lists: [{ title: 'Bullet', value: 'bullet' }]
             }
