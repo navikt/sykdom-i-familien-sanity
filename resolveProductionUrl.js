@@ -1,3 +1,5 @@
 export default function resolveProductionUrl(document) {
-    return `https://sykdom-i-familien-1131286467.gtsb.io/nb/${document.slug.current}`;
+    return document && document.slug
+        ? `https://sykdom-i-familien-1131286467.gtsb.io/nb/${document.slug.current}`
+        : undefined;
 }
