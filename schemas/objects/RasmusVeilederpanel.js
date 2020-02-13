@@ -1,5 +1,7 @@
+import React from 'react';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
+import RasmusIcon from '../../components/icons/RasmusIcon';
 
 const RasmusVeilederpanel = {
     title: 'Rasmus veilederpanel',
@@ -23,7 +25,9 @@ const RasmusVeilederpanel = {
         select: { content: 'content', title: 'title' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale)
+                title: getLocaleContent(props.title, defaultLocale),
+                subtitle: 'Rasmus veileder',
+                media: <RasmusIcon />
             };
         }
     }
