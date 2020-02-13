@@ -18,6 +18,8 @@ const Veilederpanel = {
             name: 'veiledertype',
             type: 'string',
             fieldset: 'veileder',
+            description:
+                'For å få Rasmus med checkpunkter, velg Rasmus som type. Skriv deretter alt innholde i feltet over, og bruk listestil på det som skal være punkter. For å endre punktene til å bli checkpunkter, marker all teksten i punktene og velg [Checklist] i layout-dropdown til venstre over tekstboksen.',
             options: {
                 layout: 'list',
                 list: [
