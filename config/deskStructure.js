@@ -71,7 +71,6 @@ export default () =>
                                         .title('Forhåndsvisning NN')
                                         .icon(EyeIcon)
                                 ])
-                                .icon(YtelsePageIcon)
                         )
                 )
                 .icon(() => <YtelsePageIcon isPublic={true} />),
