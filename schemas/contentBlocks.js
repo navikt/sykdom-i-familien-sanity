@@ -5,5 +5,6 @@ export const contentBlocks = [
     },
     { type: 'tabs' },
     { type: 'veilederpanel' },
-    { type: 'rasmusVeilederpanel' }
+    { type: 'rasmusVeilederpanel' },
+    { type: 'infopanelMedKnapper' }
 ];
