@@ -110,11 +110,13 @@ export default () =>
                 )
                 .icon(() => <YtelsePageIcon isPublic={false} />),
             S.divider(),
+            S.divider(),
+            S.divider(),
             S.listItem()
-                .title('Administrasjon')
+                .title('Publisering')
                 .child(
                     S.component()
-                        .title('Forhåndsvisning og produksjon')
+                        .title('Publisering')
                         .component(AdminPage)
                 )
                 .icon(AdminIcon),

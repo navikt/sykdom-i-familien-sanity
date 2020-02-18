@@ -35,7 +35,7 @@ export default class EnvPublish extends React.Component {
         };
     }
     render() {
-        const { title, description, data } = this.props;
+        const { title, description, url, data } = this.props;
         const { pending, error, done, token } = this.state;
 
         const onSuccess = () => {
@@ -49,6 +49,11 @@ export default class EnvPublish extends React.Component {
         return (
             <Fieldset legend={title}>
                 <p>{description}</p>
+                {url && (
+                    <p>
+                        <a href={url}>{}</a>
+                    </p>
+                )}
                 <div style={{ marginBottom: '1rem' }}>
                     <FormField label="Token">
                         <Input

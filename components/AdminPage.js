@@ -20,14 +20,16 @@ export default class AdminPage extends React.Component {
         return (
             <div style={{ padding: ' 1rem' }}>
                 <PublishComponent
-                    title="Staging"
+                    title="Testmiljø - www-q0 (internt)"
                     data={stagingPayload}
-                    description="Oppdater staging-miljøet med alt publisert innhold fra Sanity staging datasettet."
+                    description="Oppdater q-miljøet med alt innhold fra Sanity datasettet. Sider som ikke er lansert kommer også med."
+                    url="https://www-q0.nav.no/familie/sykdom-i-familien/"
                 />
                 <PublishComponent
-                    title="Produksjon"
+                    title="Produksjon - www.nav.no"
                     data={productionPayload}
-                    description="Oppdater produksjonsmiljøet med alt publisert innhold fra Sanity production datasettet."
+                    description="Oppdater www.nav.no med alt innhold som er publisert og merket med at det skal ut på nav.no."
+                    url="https://familie.nav.no/sykdom-i-familien/"
                 />
             </div>
         );
