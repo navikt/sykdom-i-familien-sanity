@@ -81,7 +81,7 @@ export default () =>
             S.divider(),
 
             S.listItem()
-                .title('Nye faktasider (ikke lansert på nav.no)')
+                .title('Faktasider ikke tilgjengelig på nav.no')
                 .child(
                     S.documentList()
                         .title('Kladd')
