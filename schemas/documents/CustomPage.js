@@ -2,11 +2,11 @@ import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 
-const Frontpage = {
-    title: 'Forside',
-    name: 'frontpage',
+const CustomPage = {
+    title: 'Generell side',
+    name: 'customPage',
     type: 'document',
-    id: 'forside',
+    id: 'customPage',
     fieldsets: [
         {
             name: 'internal',
@@ -15,11 +15,28 @@ const Frontpage = {
                 collapsible: true
             }
         },
-        { title: 'Introduksjon', name: 'introduction' }
+        {
+            title: 'Tittel og ingress',
+            name: 'introduction',
+            options: {
+                collapsible: true
+            }
+        }
     ],
     fields: [
         {
-            title: 'meta-description',
+            title: 'Slug',
+            type: 'slug',
+            name: 'slug',
+            description: 'Hva skal lenken til denne siden være',
+            fieldset: 'internal',
+            options: {
+                source: 'title.nb'
+            },
+            validation: (Rule) => Rule.required()
+        },
+        {
+            title: 'Meta-description',
             description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
             type: 'localeSimpleText',
             name: 'metadescription',
@@ -43,6 +60,12 @@ const Frontpage = {
             validation: localeContentValidation
         },
         {
+            title: 'Illustrasjon',
+            name: 'illustration',
+            type: 'reference',
+            to: { type: 'illustration' }
+        },
+        {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
@@ -50,22 +73,10 @@ const Frontpage = {
             validation: localeContentValidation
         },
         {
-            title: 'Illustrasjon',
-            name: 'illustration',
-            type: 'reference',
-            to: [{ type: 'illustration' }]
-        },
-        {
-            title: 'Melding',
-            name: 'message',
-            type: 'reference',
-            to: [{ type: 'message' }]
-        },
-        {
-            title: 'Innganger',
-            name: 'frontpageStories',
+            title: 'Innhold',
+            name: 'content',
             type: 'array',
-            of: [{ type: 'frontpagePageLink' }, { type: 'frontpageLink' }]
+            of: [{ type: 'textblock' }, { type: 'faq' }, { type: 'alertstripe' }]
         }
     ],
     preview: {
@@ -78,4 +89,4 @@ const Frontpage = {
     }
 };
 
-export default Frontpage;
+export default CustomPage;
