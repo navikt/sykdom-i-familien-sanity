@@ -75,6 +75,35 @@ export default () =>
                 )
                 .icon(() => <YtelsePageIcon isPublic={true} />),
             S.listItem()
+                .title('Andre sider')
+                .child(
+                    S.documentList()
+                        .title('FAQ nav.no')
+                        .filter('_type == "customPage"')
+                        .child((documentId) =>
+                            S.document(document)
+                                .documentId(documentId)
+                                .schemaType('customPage')
+                                .views([
+                                    S.view
+                                        .form()
+                                        .icon(EditIcon)
+                                        .title('Redigering'),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nb' })
+                                        .title('Forhåndsvisning NB')
+                                        .icon(EyeIcon),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nn' })
+                                        .title('Forhåndsvisning NN')
+                                        .icon(EyeIcon)
+                                ])
+                        )
+                )
+                .icon(() => <YtelsePageIcon isPublic={true} />),
+            S.listItem()
                 .title('Illustrasjoner')
                 .child(S.documentTypeList('illustration'))
                 .icon(IllustrationIcon),

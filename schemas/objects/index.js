@@ -7,6 +7,8 @@ import FrontpagePageLink from './FrontpagePageLink';
 import FrontpageLink from './FrontpageLink';
 import InfopanelMedKnapperContentType from './InfopanelMedKnapper';
 import RasmusVeilederpanel from './RasmusVeilederpanel';
+import AlertStripe from './AlertStripe';
+import FAQ from './FAQ';
 
 const objects = [
     SectionContentType,
@@ -17,7 +19,9 @@ const objects = [
     FrontpagePageLink,
     FrontpageLink,
     InfopanelMedKnapperContentType,
-    RasmusVeilederpanel
+    RasmusVeilederpanel,
+    AlertStripe,
+    FAQ
 ];
 
 export default objects;
