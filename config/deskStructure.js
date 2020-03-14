@@ -107,6 +107,10 @@ export default () =>
                 .title('Illustrasjoner')
                 .child(S.documentTypeList('illustration'))
                 .icon(IllustrationIcon),
+            S.listItem()
+                .title('Meldinger')
+                .child(S.documentTypeList('message')),
+
             S.divider(),
 
             S.listItem()

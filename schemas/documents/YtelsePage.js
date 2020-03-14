@@ -113,6 +113,12 @@ const YtelsePage = {
             to: { type: 'illustration' }
         },
         {
+            title: 'Melding',
+            name: 'message',
+            type: 'reference',
+            to: [{ type: 'message' }]
+        },
+        {
             title: 'Innhold',
             name: 'inShort',
             fieldset: 'inShort',
