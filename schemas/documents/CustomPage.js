@@ -60,6 +60,12 @@ const CustomPage = {
             validation: localeContentValidation
         },
         {
+            title: 'Illustrasjon',
+            name: 'illustration',
+            type: 'reference',
+            to: { type: 'illustration' }
+        },
+        {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
