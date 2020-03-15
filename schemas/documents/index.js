@@ -6,7 +6,18 @@ import IllustrationCategory from './IllustrationCategory';
 import Link from './Link';
 import CustomPage from './CustomPage';
 import Message from './Message';
+import Settings from './Settings';
 
-const documents = [Frontpage, YtelsePage, Illustration, Ytelse, IllustrationCategory, Link, CustomPage, Message];
+const documents = [
+    Frontpage,
+    YtelsePage,
+    Illustration,
+    Ytelse,
+    IllustrationCategory,
+    Link,
+    CustomPage,
+    Message,
+    Settings
+];
 
 export default documents;

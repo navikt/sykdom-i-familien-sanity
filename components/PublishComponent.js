@@ -31,12 +31,13 @@ export default class EnvPublish extends React.Component {
             pending: false,
             done: false,
             error: undefined,
-            token: ''
+            token: this.props.token
         };
     }
     render() {
-        const { title, description, url, data } = this.props;
+        const { title, description, url, data, buttonLabel = 'Oppdater nå' } = this.props;
         const { pending, error, done, token } = this.state;
+        const hasTokenFromDocument = this.props.token;
 
         const onSuccess = () => {
             this.setState({ pending: false, error: undefined, done: true });
@@ -54,16 +55,18 @@ export default class EnvPublish extends React.Component {
                         <a href={url}>{}</a>
                     </p>
                 )}
-                <div style={{ marginBottom: '1rem' }}>
-                    <FormField label="Token">
-                        <Input
-                            id="token_input"
-                            type="text"
-                            value={token}
-                            onChange={(evt) => this.setState({ token: evt.target.value })}
-                        />
-                    </FormField>
-                </div>
+                {!hasTokenFromDocument && (
+                    <div style={{ marginBottom: '1rem' }}>
+                        <FormField label="Token">
+                            <Input
+                                id="token_input"
+                                type="text"
+                                value={token}
+                                onChange={(evt) => this.setState({ token: evt.target.value })}
+                            />
+                        </FormField>
+                    </div>
+                )}
                 <Button
                     style={{ width: '10rem', height: '2.5rem' }}
                     onClick={
@@ -80,8 +83,13 @@ export default class EnvPublish extends React.Component {
                             <LoadingSpinner />
                         </span>
                     )}
-                    {!pending && <span style={{ display: 'flex', flexWrap: 'nowrap' }}>Oppdater nå</span>}
+                    {!pending && <span style={{ display: 'flex', flexWrap: 'nowrap' }}>{buttonLabel}</span>}
                 </Button>
+                {hasTokenFromDocument && (
+                    <div style={{ marginTop: '1rem', fontStyle: 'italic' }}>
+                        Du kan nå publisere uten å lime inn token Siv :)
+                    </div>
+                )}
 
                 {pending !== true && (
                     <>

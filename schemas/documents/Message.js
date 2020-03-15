@@ -32,7 +32,7 @@ const Message = {
             name: 'style',
             type: 'string',
             options: {
-                layout: 'list',
+                layout: 'radio',
                 list: [
                     { title: 'Info (blå)', value: STYLES.info },
                     { title: 'Advarsel (gul)', value: STYLES.advarsel },

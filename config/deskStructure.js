@@ -148,9 +148,15 @@ export default () =>
             S.listItem()
                 .title('Publisering')
                 .child(
-                    S.component()
+                    S.document(document)
                         .title('Publisering')
-                        .component(AdminPage)
+                        .documentId('settings-config')
+                        .views([
+                            S.view
+                                .component(AdminPage)
+                                .options({ previewURL, locale: 'nb' })
+                                .title('Whoa')
+                        ])
                 )
                 .icon(AdminIcon),
             S.divider(),
@@ -169,6 +175,7 @@ export default () =>
                             S.listItem()
                                 .title('Ytelser')
                                 .child(S.documentTypeList('ytelse')),
+
                             S.listItem()
                                 .title('Illustrasjoner etter kategori')
                                 .child(
@@ -190,7 +197,22 @@ export default () =>
                                 ),
                             S.listItem()
                                 .title('Lenker')
-                                .child(S.documentTypeList('link'))
+                                .child(S.documentTypeList('link')),
+                            S.listItem()
+                                .title('Config')
+                                .child(
+                                    S.editor()
+                                        .title('Settings')
+                                        .id('settings')
+                                        .schemaType('settings')
+                                        .documentId('settings-config')
+                                        .views([
+                                            S.view
+                                                .form()
+                                                .icon(EditIcon)
+                                                .title('Redigering')
+                                        ])
+                                )
                         ])
                 )
         ]);
