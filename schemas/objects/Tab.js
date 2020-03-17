@@ -22,6 +22,11 @@ const Tab = {
             name: 'content',
             type: 'array',
             of: contentBlocks
+        },
+        {
+            title: 'Slug',
+            name: 'slug',
+            type: 'string'
         }
     ],
     preview: {
