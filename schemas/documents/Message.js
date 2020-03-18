@@ -19,7 +19,8 @@ const Message = {
         {
             title: 'Navn (kun internt)',
             name: 'name',
-            type: 'string'
+            type: 'string',
+            validation: (Rule) => Rule.required()
         },
         {
             title: 'Tittel (valgfri)',
@@ -56,22 +57,21 @@ const Message = {
         },
         prepare(props) {
             const hasTitle = hasLocaleValue(props.title);
-            const navn = props.name ? `${props.name}. ` : '';
-            const subtitle = `${navn}(${props.style})`;
 
-            const title = hasTitle
+            const title = `${props.name}(${props.style})`;
+            const subtitle = hasTitle
                 ? getLocaleContent(props.title, defaultLocale)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
 
             if (hasTitle) {
                 return {
-                    title: shortenText(title),
-                    subtitle
+                    title,
+                    subtitle: shortenText(subtitle)
                 };
             }
             return {
-                title: shortenText(title) || 'Uten tittel',
-                subtitle
+                title,
+                subtitle: shortenText(subtitle) || 'Uten tittel'
             };
         }
     }
