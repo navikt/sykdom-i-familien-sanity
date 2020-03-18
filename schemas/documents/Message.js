@@ -58,7 +58,7 @@ const Message = {
         prepare(props) {
             const hasTitle = hasLocaleValue(props.title);
 
-            const title = `${props.name}(${props.style})`;
+            const title = `${props.name}`;
             const subtitle = hasTitle
                 ? getLocaleContent(props.title, defaultLocale)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
@@ -66,12 +66,12 @@ const Message = {
             if (hasTitle) {
                 return {
                     title,
-                    subtitle: shortenText(subtitle)
+                    subtitle: `[${props.style}] ${shortenText(subtitle)}`
                 };
             }
             return {
                 title,
-                subtitle: shortenText(subtitle) || 'Uten tittel'
+                subtitle: `[${props.style}] ${shortenText(subtitle) || 'Uten tittel'}`
             };
         }
     }
