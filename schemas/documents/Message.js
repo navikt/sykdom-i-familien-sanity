@@ -17,6 +17,11 @@ const Message = {
     type: 'document',
     fields: [
         {
+            title: 'Navn (kun internt)',
+            name: 'name',
+            type: 'string'
+        },
+        {
             title: 'Tittel (valgfri)',
             name: 'title',
             type: 'localeString'
@@ -44,12 +49,16 @@ const Message = {
     ],
     preview: {
         select: {
+            name: 'name',
             title: 'title',
             style: 'style',
             content: 'content'
         },
         prepare(props) {
             const hasTitle = hasLocaleValue(props.title);
+            const navn = props.name ? `${props.name}. ` : '';
+            const subtitle = `${navn}(${props.style})`;
+
             const title = hasTitle
                 ? getLocaleContent(props.title, defaultLocale)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
@@ -57,12 +66,12 @@ const Message = {
             if (hasTitle) {
                 return {
                     title: shortenText(title),
-                    subtitle: `Type: ${props.style}`
+                    subtitle
                 };
             }
             return {
                 title: shortenText(title) || 'Uten tittel',
-                subtitle: `Type: ${props.style}`
+                subtitle
             };
         }
     }
