@@ -229,6 +229,9 @@ export default () =>
                                 .title('Lenker')
                                 .child(S.documentTypeList('link')),
                             S.listItem()
+                                .title('Custom komponent')
+                                .child(S.documentTypeList('customComponent')),
+                            S.listItem()
                                 .title('Config')
                                 .child(
                                     S.editor()

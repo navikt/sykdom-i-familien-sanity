@@ -8,6 +8,7 @@ import CustomPage from './CustomPage';
 import Message from './Message';
 import Settings from './Settings';
 import SectionPage from './SectionPage';
+import CustomComponent from './CustomComponent';
 
 const documents = [
     Frontpage,
@@ -19,7 +20,8 @@ const documents = [
     CustomPage,
     Message,
     Settings,
-    SectionPage
+    SectionPage,
+    CustomComponent
 ];
 
 export default documents;

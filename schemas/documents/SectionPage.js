@@ -65,7 +65,15 @@ const SectionPage = {
             title: 'Innhold',
             name: 'content',
             type: 'array',
-            of: [{ type: 'section' }, { type: 'reference', to: [{ type: 'message' }], title: 'Referanse til melding' }]
+            of: [
+                { type: 'section' },
+                {
+                    type: 'reference',
+                    description: 'Inkluder innhold som allerede er registrert som egne dokumenter',
+                    to: [{ type: 'message' }, { type: 'customComponent' }],
+                    title: 'Referanse'
+                }
+            ]
         }
     ],
     preview: {
