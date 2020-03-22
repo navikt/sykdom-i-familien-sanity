@@ -1,5 +1,5 @@
 const CustomComponent = {
-    title: 'CustomComponent',
+    title: 'React komponent',
     name: 'customComponent',
     type: 'document',
     fields: [

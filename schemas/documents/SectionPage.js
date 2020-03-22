@@ -6,7 +6,7 @@ import YtelsePageIcon from '../../components/icons/YtelsePageIcon';
 
 const SectionPage = {
     icon: YtelsePageIcon,
-    title: 'Side men seksjoner og meny',
+    title: 'Generell side med meny',
     name: 'sectionPage',
     type: 'document',
     fieldsets: [
@@ -19,6 +19,13 @@ const SectionPage = {
         }
     ],
     fields: [
+        {
+            title: 'Sidetittel',
+            name: 'title',
+            type: 'localeString',
+            fieldset: 'internal',
+            validation: localeContentValidation
+        },
         {
             title: 'slug',
             type: 'slug',
@@ -34,8 +41,7 @@ const SectionPage = {
             description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
             type: 'localeSimpleText',
             name: 'metadescription',
-            fieldset: 'internal',
-            validation: localeContentValidation
+            fieldset: 'internal'
         },
         {
             title: 'Tilgjengelig på nav.no',
@@ -56,10 +62,13 @@ const SectionPage = {
             }
         },
         {
-            title: 'Bannertittel',
-            name: 'title',
-            type: 'localeString',
-            validation: localeContentValidation
+            title: 'Vis venstremeny',
+            type: 'boolean',
+            name: 'showLeftMenu',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox'
+            }
         },
         {
             title: 'Innhold',

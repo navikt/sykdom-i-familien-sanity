@@ -105,35 +105,6 @@ export default () =>
                 .icon(() => <YtelsePageIcon isPublic={true} />),
 
             S.listItem()
-                .title('Seksjonssider')
-                .child(
-                    S.documentList()
-                        .title('Side med seksjoner og meny')
-                        .filter('_type == "sectionPage"')
-                        .child((documentId) =>
-                            S.document(document)
-                                .documentId(documentId)
-                                .schemaType('sectionPage')
-                                .views([
-                                    S.view
-                                        .form()
-                                        .icon(EditIcon)
-                                        .title('Redigering'),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nb' })
-                                        .title('Forhåndsvisning NB')
-                                        .icon(EyeIcon),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nn' })
-                                        .title('Forhåndsvisning NN')
-                                        .icon(EyeIcon)
-                                ])
-                        )
-                )
-                .icon(() => <YtelsePageIcon isPublic={true} />),
-            S.listItem()
                 .title('Illustrasjoner')
                 .child(S.documentTypeList('illustration'))
                 .icon(IllustrationIcon),
@@ -199,6 +170,40 @@ export default () =>
                         .title('Kategorier')
                         .items([
                             S.listItem()
+                                .title('Generelle sider')
+                                .child(
+                                    S.documentList()
+                                        .title('Generelle sider')
+                                        .filter('_type == "sectionPage"')
+                                        .child((documentId) =>
+                                            S.document(document)
+                                                .documentId(documentId)
+                                                .schemaType('sectionPage')
+                                                .views([
+                                                    S.view
+                                                        .form()
+                                                        .icon(EditIcon)
+                                                        .title('Redigering'),
+                                                    S.view
+                                                        .component(IframePreview)
+                                                        .options({ previewURL, locale: 'nb' })
+                                                        .title('Forhåndsvisning NB')
+                                                        .icon(EyeIcon),
+                                                    S.view
+                                                        .component(IframePreview)
+                                                        .options({ previewURL, locale: 'nn' })
+                                                        .title('Forhåndsvisning NN')
+                                                        .icon(EyeIcon)
+                                                ])
+                                        )
+                                )
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('React komponenter')
+                                .child(S.documentTypeList('customComponent')),
+                            S.divider(),
+                            S.divider(),
+                            S.listItem()
                                 .title('Illustrasjonskategorier')
                                 .child(S.documentTypeList('illustrationCategory')),
 
@@ -228,9 +233,6 @@ export default () =>
                             S.listItem()
                                 .title('Lenker')
                                 .child(S.documentTypeList('link')),
-                            S.listItem()
-                                .title('Custom komponent')
-                                .child(S.documentTypeList('customComponent')),
                             S.listItem()
                                 .title('Config')
                                 .child(
