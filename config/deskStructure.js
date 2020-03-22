@@ -75,15 +75,45 @@ export default () =>
                 )
                 .icon(() => <YtelsePageIcon isPublic={true} />),
             S.listItem()
-                .title('Andre sider')
+                .title('Spørsmål og svar')
                 .child(
                     S.documentList()
-                        .title('FAQ nav.no')
+                        .title('Spørsmål og svar sider')
                         .filter('_type == "customPage"')
                         .child((documentId) =>
                             S.document(document)
                                 .documentId(documentId)
                                 .schemaType('customPage')
+                                .views([
+                                    S.view
+                                        .form()
+                                        .icon(EditIcon)
+                                        .title('Redigering'),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nb' })
+                                        .title('Forhåndsvisning NB')
+                                        .icon(EyeIcon),
+                                    S.view
+                                        .component(IframePreview)
+                                        .options({ previewURL, locale: 'nn' })
+                                        .title('Forhåndsvisning NN')
+                                        .icon(EyeIcon)
+                                ])
+                        )
+                )
+                .icon(() => <YtelsePageIcon isPublic={true} />),
+
+            S.listItem()
+                .title('Seksjonssider')
+                .child(
+                    S.documentList()
+                        .title('Side med seksjoner og meny')
+                        .filter('_type == "sectionPage"')
+                        .child((documentId) =>
+                            S.document(document)
+                                .documentId(documentId)
+                                .schemaType('sectionPage')
                                 .views([
                                     S.view
                                         .form()
