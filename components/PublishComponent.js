@@ -9,7 +9,7 @@ import LoadingSpinner from 'part:@sanity/components/loading/spinner';
 import Message from './Message';
 
 const triggerBuild = (data, token, cbSuccess, cbError) => {
-    const url = 'https://api.github.com/repos/navikt/sykdom-i-familien/deployments';
+    const url = 'https://api.github.com/repos/navikt/sykdom-i-familien/dispatches';
     superagent
         .post(url)
         .set('Accept', 'application/vnd.github.ant-man-preview+json')
@@ -31,7 +31,7 @@ export default class EnvPublish extends React.Component {
             pending: false,
             done: false,
             error: undefined,
-            token: this.props.token
+            token: this.props.token,
         };
     }
     render() {
@@ -85,11 +85,6 @@ export default class EnvPublish extends React.Component {
                     )}
                     {!pending && <span style={{ display: 'flex', flexWrap: 'nowrap' }}>{buttonLabel}</span>}
                 </Button>
-                {hasTokenFromDocument && (
-                    <div style={{ marginTop: '1rem', fontStyle: 'italic' }}>
-                        Du kan nå publisere uten å lime inn token Siv :)
-                    </div>
-                )}
 
                 {pending !== true && (
                     <>
