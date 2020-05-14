@@ -5,14 +5,14 @@ const stagingPayload = {
     ref: 'master',
     environment: 'dev-sbs',
     auto_merge: false,
-    required_context: []
+    required_contexts: [],
 };
 
 const productionPayload = {
     ref: 'master',
     environment: 'prod-sbs',
     auto_merge: false,
-    required_context: []
+    required_contexts: [],
 };
 
 class AdminPage extends React.Component {
