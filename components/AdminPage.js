@@ -2,19 +2,11 @@ import * as React from 'react';
 import PublishComponent from './PublishComponent';
 
 const stagingPayload = {
-    event_type: 'publish-content',
-    client_payload: {
-        environment: 'dev-sbs',
-        integration: true,
-    },
+    event_type: 'publish-dev-sbs',
 };
 
 const productionPayload = {
-    event_type: 'publish-content',
-    client_payload: {
-        environment: 'prod-sbs',
-        integration: true,
-    },
+    event_type: 'publish-prod-sbs',
 };
 
 class AdminPage extends React.Component {
