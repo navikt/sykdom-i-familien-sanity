@@ -3,6 +3,7 @@ import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import YtelsePageIcon from '../../components/icons/YtelsePageIcon';
+import { siteField } from '../fields/siteField';
 
 const SectionPage = {
     icon: YtelsePageIcon,
@@ -14,17 +15,21 @@ const SectionPage = {
             name: 'internal',
             title: 'Oppsett',
             options: {
-                collapsible: true
-            }
-        }
+                collapsible: true,
+            },
+        },
     ],
     fields: [
+        {
+            ...siteField,
+            fieldset: 'internal',
+        },
         {
             title: 'Sidetittel',
             name: 'title',
             type: 'localeString',
             fieldset: 'internal',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'slug',
@@ -32,16 +37,16 @@ const SectionPage = {
             name: 'slug',
             fieldset: 'internal',
             options: {
-                source: 'title.nb'
+                source: 'title.nb',
             },
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'meta-description',
             description: 'Beskrivelse som dukker opp på blant annet google ved treff på denne siden',
             type: 'localeSimpleText',
             name: 'metadescription',
-            fieldset: 'internal'
+            fieldset: 'internal',
         },
         {
             title: 'Tilgjengelig på nav.no',
@@ -49,8 +54,8 @@ const SectionPage = {
             name: 'isPublic',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Vis språkvalg',
@@ -58,8 +63,8 @@ const SectionPage = {
             name: 'showLanguageToggle',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Vis venstremeny',
@@ -67,8 +72,8 @@ const SectionPage = {
             name: 'showLeftMenu',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Innhold',
@@ -80,10 +85,10 @@ const SectionPage = {
                     type: 'reference',
                     description: 'Inkluder innhold som allerede er registrert som egne dokumenter',
                     to: [{ type: 'message' }, { type: 'customComponent' }],
-                    title: 'Referanse'
-                }
-            ]
-        }
+                    title: 'Referanse',
+                },
+            ],
+        },
     ],
     preview: {
         select: { title: 'title', isPublic: 'isPublic' },
@@ -91,10 +96,10 @@ const SectionPage = {
             return {
                 title: getLocaleContent(props.title, defaultLocale),
                 subtitle: props.isPublic === false ? 'Kladd' : undefined,
-                media: <YtelsePageIcon isPublic={props.isPublic} />
+                media: <YtelsePageIcon isPublic={props.isPublic} />,
             };
-        }
-    }
+        },
+    },
 };
 
 export default SectionPage;

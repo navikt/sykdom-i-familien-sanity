@@ -9,9 +9,18 @@
     },
     "__experimental_spaces": [
         {
+            "name": "multisite",
+            "title": "Multisite",
+            "default": true,
+            "api": {
+                "projectId": "8ux9tyb9",
+                "dataset": "multisite"
+            }
+        },
+        {
             "name": "production",
             "title": "Prod",
-            "default": true,
+            "default": false,
             "api": {
                 "projectId": "8ux9tyb9",
                 "dataset": "production"

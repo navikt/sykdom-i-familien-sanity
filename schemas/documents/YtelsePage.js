@@ -3,6 +3,7 @@ import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import YtelsePageIcon from '../../components/icons/YtelsePageIcon';
+import { siteField } from '../fields/siteField';
 
 const YtelsePage = {
     icon: YtelsePageIcon,
@@ -14,32 +15,36 @@ const YtelsePage = {
             name: 'internal',
             title: 'Oppsett',
             options: {
-                collapsible: true
-            }
+                collapsible: true,
+            },
         },
         {
             name: 'banner',
             title: 'Sidetopp',
             options: {
-                collapsible: true
-            }
+                collapsible: true,
+            },
         },
         {
             name: 'inShort',
             title: 'Kort fortalt',
             options: {
-                collapsible: true
-            }
-        }
+                collapsible: true,
+            },
+        },
     ],
     fields: [
+        {
+            ...siteField,
+            fieldset: 'internal',
+        },
         {
             title: 'Ytelse',
             name: 'ytelse',
             type: 'reference',
             fieldset: 'internal',
             to: { type: 'ytelse' },
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'slug',
@@ -47,9 +52,9 @@ const YtelsePage = {
             name: 'slug',
             fieldset: 'internal',
             options: {
-                source: 'title.nb'
+                source: 'title.nb',
             },
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'meta-description',
@@ -57,7 +62,7 @@ const YtelsePage = {
             type: 'localeSimpleText',
             name: 'metadescription',
             fieldset: 'internal',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Tilgjengelig på nav.no',
@@ -65,8 +70,8 @@ const YtelsePage = {
             name: 'isPublic',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Vis språkvalg',
@@ -74,70 +79,70 @@ const YtelsePage = {
             name: 'showLanguageToggle',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
             fieldset: 'banner',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Introtekst',
             name: 'intro',
             type: 'localeRichText',
             fieldset: 'banner',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Bannerillustrasjon',
             name: 'banner',
             type: 'reference',
             fieldset: 'banner',
-            to: { type: 'illustration' }
+            to: { type: 'illustration' },
         },
         {
             title: 'Tittel',
             name: 'inShortTitle',
             type: 'localeString',
             fieldset: 'inShort',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Illustrasjon',
             name: 'illustration',
             type: 'reference',
             fieldset: 'inShort',
-            to: { type: 'illustration' }
+            to: { type: 'illustration' },
         },
         {
             title: 'Melding',
             name: 'message',
             type: 'reference',
-            to: [{ type: 'message' }]
+            to: [{ type: 'message' }],
         },
         {
             title: 'Innhold',
             name: 'inShort',
             fieldset: 'inShort',
             type: 'localeRichText',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Ekstra komponenter',
             name: 'inShortEkstraKomponenter',
             type: 'array',
             fieldset: 'inShort',
-            of: [{ type: 'infopanelMedKnapper' }]
+            of: [{ type: 'infopanelMedKnapper' }],
         },
         {
             title: 'Sideseksjoner',
             name: 'content',
             type: 'array',
-            of: [{ type: 'section' }]
-        }
+            of: [{ type: 'section' }],
+        },
     ],
     preview: {
         select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic' },
@@ -145,10 +150,10 @@ const YtelsePage = {
             return {
                 title: getLocaleContent(props.title, defaultLocale),
                 subtitle: props.isPublic === false ? 'Kladd' : undefined,
-                media: <YtelsePageIcon isPublic={props.isPublic} />
+                media: <YtelsePageIcon isPublic={props.isPublic} />,
             };
-        }
-    }
+        },
+    },
 };
 
 export default YtelsePage;
