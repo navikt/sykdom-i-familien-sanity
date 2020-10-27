@@ -96,11 +96,11 @@ const SectionPage = {
         },
     ],
     preview: {
-        select: { title: 'title', isPublic: 'isPublic' },
+        select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic', site: 'site' },
         prepare(props) {
             return {
                 title: getLocaleContent(props.title, defaultLocale),
-                subtitle: props.isPublic === false ? 'Kladd' : undefined,
+                subtitle: `${props.site || ''}${props.isPublic === false ? ' Kladd' : ''}`,
                 media: <YtelsePageIcon isPublic={props.isPublic} />,
             };
         },

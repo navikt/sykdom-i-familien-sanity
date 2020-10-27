@@ -33,7 +33,7 @@ export default () =>
                         .items([
                             S.listItem()
                                 .title('Forsiden')
-                                .child(getForsidePart('Forside - nav.no', 'frontpage-config'))
+                                .child(getForsidePart('Forside - nav.no', 'frontpage-config', 'frontpage-config'))
                                 .icon(HomeIcon),
                             S.listItem()
                                 .title('Faktasider')
@@ -63,7 +63,13 @@ export default () =>
                         .items([
                             S.listItem()
                                 .title('Forside')
-                                .child(getForsidePart('Forside - arbeidsgiver', 'frontpage-config-arbeidsgiver'))
+                                .child(
+                                    getForsidePart(
+                                        'Forside - arbeidsgiver',
+                                        'frontpage-config-arbeidsgiver',
+                                        'frontpage-config-arbeidsgiver'
+                                    )
+                                )
                                 .icon(HomeIcon),
                             S.listItem()
                                 .title('Undersider')

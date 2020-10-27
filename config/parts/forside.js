@@ -5,9 +5,10 @@ import EditIcon from 'part:@sanity/base/edit-icon';
 import IframePreview from '../../components/previews/iframe/IframePreview';
 import { previewURL } from '../common';
 
-const getForsidePart = (title, documentId) =>
+const getForsidePart = (title, documentId, id) =>
     S.editor()
         .title(title)
+        .id(id)
         .schemaType('frontpage')
         .documentId(documentId)
         .views([

@@ -11,30 +11,30 @@ const FrontpagePageLink = {
             name: 'page',
             type: 'reference',
             fieldset: 'internal',
-            to: { type: 'ytelsePage' },
-            validation: (Rule) => Rule.required()
+            to: [{ type: 'ytelsePage' }, { type: 'sectionPage' }, { type: 'customPage' }],
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Innhold',
             name: 'content',
-            type: 'localeRichText'
+            type: 'localeRichText',
         },
         {
             title: 'Illustration',
             name: 'illustration',
             type: 'reference',
-            to: [{ type: 'illustration' }]
-        }
+            to: [{ type: 'illustration' }],
+        },
     ],
     preview: {
-        select: { title: 'page.title' },
-        prepare({ title }) {
+        select: { title: 'page.title', site: 'page.site' },
+        prepare({ title, site }) {
             return {
-                title: `${getLocaleContent(title)}`,
-                subtitle: 'Lenke til underside'
+                title: `${site}: ${getLocaleContent(title)}`,
+                subtitle: 'Lenke til underside',
             };
-        }
-    }
+        },
+    },
 };
 
 export default FrontpagePageLink;

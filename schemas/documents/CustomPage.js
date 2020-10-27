@@ -85,10 +85,11 @@ const CustomPage = {
         },
     ],
     preview: {
-        select: { title: 'title', ytelse: 'ytelse' },
+        select: { title: 'title', ytelse: 'ytelse', site: 'site' },
         prepare(props) {
             return {
                 title: getLocaleContent(props.title, defaultLocale),
+                subtitle: props.site,
             };
         },
     },
