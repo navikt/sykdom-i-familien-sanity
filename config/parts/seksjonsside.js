@@ -10,7 +10,7 @@ const previewURL = remoteURL;
 const getSeksjonssiderPart = (site, title) =>
     S.documentList()
         .title(title)
-        .filter(`_type == "sectionPage" && site == "${site}"`)
+        .filter(`_type == "sectionPage"${site ? ` && site == "${site}"` : ' && !defined(site)'}`)
         .child((documentId) =>
             S.document(document)
                 .documentId(documentId)

@@ -44,7 +44,11 @@ export default () =>
                                 .child(getGenerelleSiderPart(SITES.sif.id, 'Spørsmål og svar sider'))
                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                             S.listItem()
-                                .title('Faktasider ikke tilgjengelig på nav.no')
+                                .title('Andre sider')
+                                .child(getSeksjonssiderPart(undefined, 'Andre sider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Sider ikke tilgjengelig på nav.no')
                                 .child(
                                     getYtelsesiderPart(SITES.sif.id, 'Faktasider ikke tilgjengelig på nav.no', false)
                                 )
@@ -55,24 +59,36 @@ export default () =>
                 .title('Arbeidsgiver')
                 .child(
                     S.list()
-                        .title('Sider - arbeidsgivere')
+                        .title('Arbeidsgiver')
                         .items([
                             S.listItem()
-                                .title('Forside - arbeidsgiver')
-                                .child(getForsidePart('Forside - nav.no', 'frontpage-config-arbeidsgiver'))
+                                .title('Forside')
+                                .child(getForsidePart('Forside - arbeidsgiver', 'frontpage-config-arbeidsgiver'))
                                 .icon(HomeIcon),
                             S.listItem()
-                                .title('Seksjonssider')
-                                .child(getSeksjonssiderPart(SITES.arbeidsgiver.id, 'Seksjonssider'))
-                                .icon(() => <YtelsePageIcon isPublic={true} />),
-                            S.listItem()
-                                .title('Spørsmål og svar')
-                                .child(getGenerelleSiderPart(SITES.arbeidsgiver.id, 'Spørsmål og svar'))
+                                .title('Undersider')
+                                .child(getSeksjonssiderPart(SITES.arbeidsgiver.id, 'Undersider'))
                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                         ])
                 ),
 
-            S.listItem().title('Samarbeid'),
+            S.listItem()
+                .title('Samarbeid')
+                .child(
+                    S.list()
+                        .title('Samarbeid')
+                        .items([
+                            S.listItem()
+                                .title('Forside')
+                                .child(getForsidePart('Forside - samarbeid', 'frontpage-config-samarbeid'))
+                                .icon(HomeIcon),
+                            S.listItem()
+                                .title('Undersider')
+                                .child(getSeksjonssiderPart(SITES.samarbeid.id, 'Undersider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                        ])
+                ),
+
             S.divider(),
             S.listItem()
                 .title('Fellesinnhold')
@@ -91,11 +107,6 @@ export default () =>
                                     S.list('other')
                                         .title('Kategorier')
                                         .items([
-                                            S.listItem()
-                                                .title('Generelle sider')
-                                                .child(getSeksjonssiderPart)
-                                                .icon(() => <YtelsePageIcon isPublic={true} />),
-                                            S.divider(),
                                             S.listItem()
                                                 .title('Illustrasjonskategorier')
                                                 .child(S.documentTypeList('illustrationCategory')),
@@ -149,6 +160,18 @@ export default () =>
                                         .documentId('settings-config')
                                         .views([S.view.form().icon(EditIcon).title('Redigering')])
                                 ),
+                            S.listItem()
+                                .title('Ytelsessider uten site')
+                                .child(getYtelsesiderPart(undefined, 'Ytelsessider uten site'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Seksjonssider uten site')
+                                .child(getSeksjonssiderPart(undefined, 'Seksjonssider uten site'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Andre sider uten site')
+                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
                         ])
                 ),
 

@@ -7,7 +7,7 @@ import { siteField } from '../fields/siteField';
 
 const SectionPage = {
     icon: YtelsePageIcon,
-    title: 'Generell side med meny',
+    title: 'Side med seksjoner og meny',
     name: 'sectionPage',
     type: 'document',
     fieldsets: [
@@ -74,6 +74,11 @@ const SectionPage = {
             options: {
                 layout: 'checkbox',
             },
+        },
+        {
+            title: 'Ingress',
+            name: 'ingress',
+            type: 'localeRichText',
         },
         {
             title: 'Innhold',

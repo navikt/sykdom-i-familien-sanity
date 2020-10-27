@@ -8,7 +8,9 @@ import { previewURL } from '../common';
 const getYtelsesiderPart = (site, title, isPublic = true) =>
     S.documentList()
         .title(title)
-        .filter(`_type == "ytelsePage" && isPublic == ${isPublic} && site == "${site}"`)
+        .filter(
+            `_type == "ytelsePage" && isPublic == ${isPublic}${site ? `&& site == "${site}"` : ' && !defined(site)'}`
+        )
         .child((documentId) =>
             S.document(document)
                 .documentId(documentId)

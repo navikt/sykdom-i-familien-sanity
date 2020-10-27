@@ -8,7 +8,7 @@ import { previewURL } from '../common';
 const getGenerelleSiderPart = (site, title) =>
     S.documentList()
         .title(title)
-        .filter(`_type == "customPage" && site == "${site}"`)
+        .filter(`_type == "customPage"${site ? `&& site == "${site}"` : ' && !defined(site)'}`)
         .child((documentId) =>
             S.document(document)
                 .documentId(documentId)
