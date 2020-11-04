@@ -79,10 +79,10 @@ export default () =>
                 ),
 
             S.listItem()
-                .title('Samarbeid')
+                .title('Samarbeid/lege')
                 .child(
                     S.list()
-                        .title('Samarbeid')
+                        .title('Samarbeid/lege')
                         .items([
                             S.listItem()
                                 .title('Forside')
@@ -154,6 +154,26 @@ export default () =>
                     S.list()
                         .title('System/teknisk oppsett')
                         .items([
+                            S.listItem()
+                                .title('Sider med manglende site-tilknytning')
+                                .child(
+                                    S.list()
+                                        .title('Sider med manglende site-tilknytning')
+                                        .items([
+                                            S.listItem()
+                                                .title('Ytelsessider uten site')
+                                                .child(getYtelsesiderPart(undefined, 'Ytelsessider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                            S.listItem()
+                                                .title('Seksjonssider uten site')
+                                                .child(getSeksjonssiderPart(undefined, 'Seksjonssider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                            S.listItem()
+                                                .title('Andre sider uten site')
+                                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                        ])
+                                ),
                             S.listItem().title('React komponenter').child(S.documentTypeList('customComponent')),
                             S.listItem().title('Ytelser').child(S.documentTypeList('ytelse')),
                             S.listItem()
@@ -166,18 +186,6 @@ export default () =>
                                         .documentId('settings-config')
                                         .views([S.view.form().icon(EditIcon).title('Redigering')])
                                 ),
-                            S.listItem()
-                                .title('Ytelsessider uten site')
-                                .child(getYtelsesiderPart(undefined, 'Ytelsessider uten site'))
-                                .icon(() => <YtelsePageIcon isPublic={true} />),
-                            S.listItem()
-                                .title('Seksjonssider uten site')
-                                .child(getSeksjonssiderPart(undefined, 'Seksjonssider uten site'))
-                                .icon(() => <YtelsePageIcon isPublic={true} />),
-                            S.listItem()
-                                .title('Andre sider uten site')
-                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site'))
-                                .icon(() => <YtelsePageIcon isPublic={true} />),
                         ])
                 ),
 
