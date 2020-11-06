@@ -19,7 +19,7 @@ import getForsidePart from './parts/forside';
 import getYtelsesiderPart from './parts/ytelseside';
 import getSeksjonssiderPart from './parts/seksjonsside';
 import getGenerelleSiderPart from './parts/generell-side';
-import { SITES } from '../schemas/fields/siteField';
+import SITES from '../sites';
 
 export default () =>
     S.list()

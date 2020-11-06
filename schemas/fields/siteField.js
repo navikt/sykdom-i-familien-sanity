@@ -1,17 +1,4 @@
-export const SITES = {
-    sif: {
-        title: 'Sykdom i familien (hoved)',
-        id: 'sykdom-i-familien',
-    },
-    arbeidsgiver: {
-        title: 'Arbeidsgiver',
-        id: 'arbeidsgiver',
-    },
-    samarbeid: {
-        title: 'Samarbeidspartnere',
-        id: 'samarbeid',
-    },
-};
+import SITES from '../../sites';
 
 export const siteField = {
     title: 'Site',

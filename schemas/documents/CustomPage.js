@@ -49,6 +49,15 @@ const CustomPage = {
             validation: localeContentValidation,
         },
         {
+            title: 'Tilgjengelig på nav.no',
+            type: 'boolean',
+            name: 'isPublic',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox',
+            },
+        },
+        {
             title: 'Vis språkvalg',
             type: 'boolean',
             name: 'showLanguageToggle',
