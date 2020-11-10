@@ -12,14 +12,13 @@ import IframePreview from '../components/previews/iframe/IframePreview';
 import IllustrationIcon from '../components/icons/IllustrationIcon';
 import HomeIcon from '../components/icons/HomeIcon';
 
-const remoteURL = 'https://preview-sykdomifamilien.gtsb.io/';
-const previewURL = remoteURL;
-
 import getForsidePart from './parts/forside';
 import getYtelsesiderPart from './parts/ytelseside';
 import getSeksjonssiderPart from './parts/seksjonsside';
 import getGenerelleSiderPart from './parts/generell-side';
+
 import SITES from '../sites';
+import { previewURL } from './common';
 
 export default () =>
     S.list()

@@ -3,9 +3,7 @@ import EyeIcon from 'part:@sanity/base/eye-icon';
 import EditIcon from 'part:@sanity/base/edit-icon';
 
 import IframePreview from '../../components/previews/iframe/IframePreview';
-
-const remoteURL = 'https://preview-sykdomifamilien.gtsb.io/';
-const previewURL = remoteURL;
+import { previewURL } from '../common';
 
 const getSeksjonssiderPart = (site, title) =>
     S.documentList()
