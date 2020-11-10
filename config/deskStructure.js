@@ -12,7 +12,7 @@ import IframePreview from '../components/previews/iframe/IframePreview';
 import IllustrationIcon from '../components/icons/IllustrationIcon';
 import HomeIcon from '../components/icons/HomeIcon';
 
-const remoteURL = 'https://sykdom-i-familien-1131286467.gtsb.io';
+const remoteURL = 'https://preview-sykdomifamilien.gtsb.io/';
 const previewURL = remoteURL;
 
 import getForsidePart from './parts/forside';

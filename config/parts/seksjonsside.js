@@ -4,7 +4,7 @@ import EditIcon from 'part:@sanity/base/edit-icon';
 
 import IframePreview from '../../components/previews/iframe/IframePreview';
 
-const remoteURL = 'https://sykdom-i-familien-1131286467.gtsb.io';
+const remoteURL = 'https://preview-sykdomifamilien.gtsb.io/';
 const previewURL = remoteURL;
 
 const getSeksjonssiderPart = (site, title) =>
