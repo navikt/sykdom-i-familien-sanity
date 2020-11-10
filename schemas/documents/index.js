@@ -21,7 +21,7 @@ const documents = [
     Message,
     Settings,
     SectionPage,
-    CustomComponent
+    CustomComponent,
 ];
 
 export default documents;

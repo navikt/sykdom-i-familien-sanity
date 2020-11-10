@@ -12,137 +12,182 @@ import IframePreview from '../components/previews/iframe/IframePreview';
 import IllustrationIcon from '../components/icons/IllustrationIcon';
 import HomeIcon from '../components/icons/HomeIcon';
 
-const remoteURL = 'https://sykdom-i-familien-1131286467.gtsb.io';
-const previewURL = remoteURL;
+import getForsidePart from './parts/forside';
+import getYtelsesiderPart from './parts/ytelseside';
+import getSeksjonssiderPart from './parts/seksjonsside';
+import getGenerelleSiderPart from './parts/generell-side';
+
+import SITES from '../sites';
+import { previewURL } from './common';
 
 export default () =>
     S.list()
-        .title('Sykdom i familien')
+        .title('Nettsteder')
         .items([
             S.listItem()
-                .title('Forsiden')
+                .title('Sykdom i familien (hoved)')
                 .child(
-                    S.editor()
-                        .title('Forside - nav.no')
-                        .id('frontpage')
-                        .schemaType('frontpage')
-                        .documentId('frontpage-config')
-                        .views([
-                            S.view
-                                .form()
-                                .icon(EditIcon)
-                                .title('Redigering'),
-                            S.view
-                                .component(IframePreview)
-                                .options({ previewURL, isFrontpage: true, locale: 'nb' })
-                                .title('Forhåndsvisning NB')
-                                .icon(EyeIcon),
-                            S.view
-                                .component(IframePreview)
-                                .options({ previewURL, isFrontpage: true, locale: 'nn' })
-                                .title('Forhåndsvisning NN')
-                                .icon(EyeIcon)
+                    S.list()
+                        .title('Sider - sykdom i familien')
+                        .items([
+                            S.listItem()
+                                .title('Forsiden')
+                                .child(getForsidePart('Forside - nav.no', 'frontpage-config', 'frontpage-config'))
+                                .icon(HomeIcon),
+                            S.listItem()
+                                .title('Faktasider')
+                                .child(getYtelsesiderPart(SITES.sif.id, 'Faktasider - nav.no'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Spørsmål og svar')
+                                .child(getGenerelleSiderPart(SITES.sif.id, 'Spørsmål og svar sider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Andre sider')
+                                .child(getSeksjonssiderPart(undefined, 'Andre sider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                            S.listItem()
+                                .title('Sider ikke tilgjengelig på nav.no')
+                                .child(
+                                    getYtelsesiderPart(SITES.sif.id, 'Faktasider ikke tilgjengelig på nav.no', false)
+                                )
+                                .icon(() => <YtelsePageIcon isPublic={false} />),
                         ])
-                )
-                .icon(HomeIcon),
+                ),
             S.listItem()
-                .title('Faktasider')
+                .title('Arbeidsgiver')
                 .child(
-                    S.documentList()
-                        .title('Faktasider - nav.no')
-                        .filter('_type == "ytelsePage" && isPublic == true')
-                        .child((documentId) =>
-                            S.document(document)
-                                .documentId(documentId)
-                                .schemaType('ytelsePage')
-                                .views([
-                                    S.view
-                                        .form()
-                                        .icon(EditIcon)
-                                        .title('Redigering'),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nb' })
-                                        .title('Forhåndsvisning NB')
-                                        .icon(EyeIcon),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nn' })
-                                        .title('Forhåndsvisning NN')
-                                        .icon(EyeIcon)
-                                ])
-                        )
-                )
-                .icon(() => <YtelsePageIcon isPublic={true} />),
-            S.listItem()
-                .title('Spørsmål og svar')
-                .child(
-                    S.documentList()
-                        .title('Spørsmål og svar sider')
-                        .filter('_type == "customPage"')
-                        .child((documentId) =>
-                            S.document(document)
-                                .documentId(documentId)
-                                .schemaType('customPage')
-                                .views([
-                                    S.view
-                                        .form()
-                                        .icon(EditIcon)
-                                        .title('Redigering'),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nb' })
-                                        .title('Forhåndsvisning NB')
-                                        .icon(EyeIcon),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nn' })
-                                        .title('Forhåndsvisning NN')
-                                        .icon(EyeIcon)
-                                ])
-                        )
-                )
-                .icon(() => <YtelsePageIcon isPublic={true} />),
+                    S.list()
+                        .title('Arbeidsgiver')
+                        .items([
+                            S.listItem()
+                                .title('Forside')
+                                .child(
+                                    getForsidePart(
+                                        'Forside - arbeidsgiver',
+                                        'frontpage-config-arbeidsgiver',
+                                        'frontpage-config-arbeidsgiver'
+                                    )
+                                )
+                                .icon(HomeIcon),
+                            S.listItem()
+                                .title('Undersider')
+                                .child(getSeksjonssiderPart(SITES.arbeidsgiver.id, 'Undersider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                        ])
+                ),
 
             S.listItem()
-                .title('Illustrasjoner')
-                .child(S.documentTypeList('illustration'))
-                .icon(IllustrationIcon),
+                .title('Samarbeid/lege')
+                .child(
+                    S.list()
+                        .title('Samarbeid/lege')
+                        .items([
+                            S.listItem()
+                                .title('Forside')
+                                .child(getForsidePart('Forside - samarbeid', 'frontpage-config-samarbeid'))
+                                .icon(HomeIcon),
+                            S.listItem()
+                                .title('Undersider')
+                                .child(getSeksjonssiderPart(SITES.samarbeid.id, 'Undersider'))
+                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                        ])
+                ),
+
+            S.divider(),
             S.listItem()
-                .title('Meldinger')
-                .child(S.documentTypeList('message')),
+                .title('Fellesinnhold')
+                .child(
+                    S.list()
+                        .title('Sider - sykdom i familien')
+                        .items([
+                            S.listItem()
+                                .title('Illustrasjoner')
+                                .child(S.documentTypeList('illustration'))
+                                .icon(IllustrationIcon),
+                            S.listItem().title('Meldinger').child(S.documentTypeList('message')),
+                            S.listItem()
+                                .title('Annet')
+                                .child(
+                                    S.list('other')
+                                        .title('Kategorier')
+                                        .items([
+                                            S.listItem()
+                                                .title('Illustrasjonskategorier')
+                                                .child(S.documentTypeList('illustrationCategory')),
+
+                                            S.listItem()
+                                                .title('Illustrasjoner etter kategori')
+                                                .child(
+                                                    S.documentList()
+                                                        .title('Kategorier')
+                                                        .menuItems(
+                                                            S.documentTypeList('illustrationCategory').getMenuItems(),
+                                                            S.documentTypeList('illustration').getMenuItems()
+                                                        )
+                                                        .filter('_type == $type && !defined(parents)')
+                                                        .params({ type: 'illustrationCategory' })
+                                                        .child((categoryId) =>
+                                                            S.documentList()
+                                                                .title('Illustrasjoner')
+                                                                .menuItems(
+                                                                    S.documentTypeList('illustration').getMenuItems()
+                                                                )
+                                                                .filter(
+                                                                    '_type == $type && $categoryId == category._ref'
+                                                                )
+                                                                .params({ type: 'illustration', categoryId })
+                                                        )
+                                                ),
+                                            S.listItem().title('Lenker').child(S.documentTypeList('link')),
+                                        ])
+                                ),
+                        ])
+                ),
 
             S.divider(),
 
             S.listItem()
-                .title('Faktasider ikke tilgjengelig på nav.no')
+                .title('System/teknisk oppsett')
                 .child(
-                    S.documentList()
-                        .title('Kladd')
-                        .filter('_type == "ytelsePage" && isPublic != true')
-                        .child((documentId) =>
-                            S.document(document)
-                                .documentId(documentId)
-                                .schemaType('ytelsePage')
-                                .views([
-                                    S.view
-                                        .form()
-                                        .icon(EditIcon)
-                                        .title('Redigering'),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nb' })
-                                        .title('Forhåndsvisning NB')
-                                        .icon(EyeIcon),
-                                    S.view
-                                        .component(IframePreview)
-                                        .options({ previewURL, locale: 'nn' })
-                                        .title('Forhåndsvisning NN')
-                                        .icon(EyeIcon)
-                                ])
-                        )
-                )
-                .icon(() => <YtelsePageIcon isPublic={false} />),
+                    S.list()
+                        .title('System/teknisk oppsett')
+                        .items([
+                            S.listItem()
+                                .title('Sider med manglende site-tilknytning')
+                                .child(
+                                    S.list()
+                                        .title('Sider med manglende site-tilknytning')
+                                        .items([
+                                            S.listItem()
+                                                .title('Ytelsessider uten site')
+                                                .child(getYtelsesiderPart(undefined, 'Ytelsessider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                            S.listItem()
+                                                .title('Seksjonssider uten site')
+                                                .child(getSeksjonssiderPart(undefined, 'Seksjonssider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                            S.listItem()
+                                                .title('Andre sider uten site')
+                                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site'))
+                                                .icon(() => <YtelsePageIcon isPublic={true} />),
+                                        ])
+                                ),
+                            S.listItem().title('React komponenter').child(S.documentTypeList('customComponent')),
+                            S.listItem().title('Ytelser').child(S.documentTypeList('ytelse')),
+                            S.listItem()
+                                .title('Config')
+                                .child(
+                                    S.editor()
+                                        .title('Settings')
+                                        .id('settings')
+                                        .schemaType('settings')
+                                        .documentId('settings-config')
+                                        .views([S.view.form().icon(EditIcon).title('Redigering')])
+                                ),
+                        ])
+                ),
+
             S.divider(),
             S.divider(),
             S.divider(),
@@ -152,102 +197,10 @@ export default () =>
                     S.document(document)
                         .title('Publisering')
                         .documentId('settings-config')
-                        .views([
-                            S.view
-                                .component(AdminPage)
-                                .options({ previewURL, locale: 'nb' })
-                                .title('Whoa')
-                        ])
+                        .views([S.view.component(AdminPage).options({ previewURL, locale: 'nb' }).title('Whoa')])
                 )
                 .icon(AdminIcon),
             S.divider(),
             S.divider(),
             S.divider(),
-            S.listItem()
-                .title('Annet')
-                .child(
-                    S.list('other')
-                        .title('Kategorier')
-                        .items([
-                            S.listItem()
-                                .title('Generelle sider')
-                                .child(
-                                    S.documentList()
-                                        .title('Generelle sider')
-                                        .filter('_type == "sectionPage"')
-                                        .child((documentId) =>
-                                            S.document(document)
-                                                .documentId(documentId)
-                                                .schemaType('sectionPage')
-                                                .views([
-                                                    S.view
-                                                        .form()
-                                                        .icon(EditIcon)
-                                                        .title('Redigering'),
-                                                    S.view
-                                                        .component(IframePreview)
-                                                        .options({ previewURL, locale: 'nb' })
-                                                        .title('Forhåndsvisning NB')
-                                                        .icon(EyeIcon),
-                                                    S.view
-                                                        .component(IframePreview)
-                                                        .options({ previewURL, locale: 'nn' })
-                                                        .title('Forhåndsvisning NN')
-                                                        .icon(EyeIcon)
-                                                ])
-                                        )
-                                )
-                                .icon(() => <YtelsePageIcon isPublic={true} />),
-                            S.listItem()
-                                .title('React komponenter')
-                                .child(S.documentTypeList('customComponent')),
-                            S.divider(),
-                            S.divider(),
-                            S.listItem()
-                                .title('Illustrasjonskategorier')
-                                .child(S.documentTypeList('illustrationCategory')),
-
-                            S.listItem()
-                                .title('Ytelser')
-                                .child(S.documentTypeList('ytelse')),
-
-                            S.listItem()
-                                .title('Illustrasjoner etter kategori')
-                                .child(
-                                    S.documentList()
-                                        .title('Kategorier')
-                                        .menuItems(
-                                            S.documentTypeList('illustrationCategory').getMenuItems(),
-                                            S.documentTypeList('illustration').getMenuItems()
-                                        )
-                                        .filter('_type == $type && !defined(parents)')
-                                        .params({ type: 'illustrationCategory' })
-                                        .child((categoryId) =>
-                                            S.documentList()
-                                                .title('Illustrasjoner')
-                                                .menuItems(S.documentTypeList('illustration').getMenuItems())
-                                                .filter('_type == $type && $categoryId == category._ref')
-                                                .params({ type: 'illustration', categoryId })
-                                        )
-                                ),
-                            S.listItem()
-                                .title('Lenker')
-                                .child(S.documentTypeList('link')),
-                            S.listItem()
-                                .title('Config')
-                                .child(
-                                    S.editor()
-                                        .title('Settings')
-                                        .id('settings')
-                                        .schemaType('settings')
-                                        .documentId('settings-config')
-                                        .views([
-                                            S.view
-                                                .form()
-                                                .icon(EditIcon)
-                                                .title('Redigering')
-                                        ])
-                                )
-                        ])
-                )
         ]);

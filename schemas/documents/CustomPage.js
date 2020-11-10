@@ -1,6 +1,7 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
+import { siteField } from '../fields/siteField';
 
 const CustomPage = {
     title: 'Generell side',
@@ -12,18 +13,22 @@ const CustomPage = {
             name: 'internal',
             title: 'Metadata',
             options: {
-                collapsible: true
-            }
+                collapsible: true,
+            },
         },
         {
             title: 'Tittel og ingress',
             name: 'introduction',
             options: {
-                collapsible: true
-            }
-        }
+                collapsible: true,
+            },
+        },
     ],
     fields: [
+        {
+            ...siteField,
+            fieldset: 'internal',
+        },
         {
             title: 'Slug',
             type: 'slug',
@@ -31,9 +36,9 @@ const CustomPage = {
             description: 'Hva skal lenken til denne siden være',
             fieldset: 'internal',
             options: {
-                source: 'title.nb'
+                source: 'title.nb',
             },
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Meta-description',
@@ -41,7 +46,16 @@ const CustomPage = {
             type: 'localeSimpleText',
             name: 'metadescription',
             fieldset: 'internal',
-            validation: localeContentValidation
+            validation: localeContentValidation,
+        },
+        {
+            title: 'Tilgjengelig på nav.no',
+            type: 'boolean',
+            name: 'isPublic',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Vis språkvalg',
@@ -49,44 +63,45 @@ const CustomPage = {
             name: 'showLanguageToggle',
             fieldset: 'internal',
             options: {
-                layout: 'checkbox'
-            }
+                layout: 'checkbox',
+            },
         },
         {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
             fieldset: 'introduction',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Illustrasjon',
             name: 'illustration',
             type: 'reference',
-            to: { type: 'illustration' }
+            to: { type: 'illustration' },
         },
         {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
             fieldset: 'introduction',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Innhold',
             name: 'content',
             type: 'array',
-            of: [{ type: 'textblock' }, { type: 'faq' }, { type: 'alertstripe' }]
-        }
+            of: [{ type: 'textblock' }, { type: 'faq' }, { type: 'alertstripe' }],
+        },
     ],
     preview: {
-        select: { title: 'title', ytelse: 'ytelse' },
+        select: { title: 'title', ytelse: 'ytelse', site: 'site' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale)
+                title: getLocaleContent(props.title, defaultLocale),
+                subtitle: props.site,
             };
-        }
-    }
+        },
+    },
 };
 
 export default CustomPage;
