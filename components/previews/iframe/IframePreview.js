@@ -2,29 +2,28 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './iframePreview.css';
+import { getSiteById } from '../../../sites';
 
 const assembleProjectUrl = ({ displayed, options }) => {
-    const { slug } = displayed;
-    const { previewURL, locale = 'nb' } = options;
+    const { slug, site } = displayed || {};
+    const { previewURL, locale = 'nb', isFrontpage } = options;
+    const siteInfo = getSiteById(site) || { path: '' };
 
-    if (options.isFrontpage) {
-        return `${previewURL}/${locale}/`;
+    if (isFrontpage) {
+        return `${previewURL}/${locale}/${siteInfo.path}`;
     }
 
-    if (!slug || !previewURL) {
-        console.warn('Missing slug or previewURL', { slug, previewURL });
-        return '';
-    }
-    return `${previewURL}/${locale}/${slug.current}`;
+    const url = slug ? `${previewURL}/${locale}/${siteInfo.path}/${slug.current}` : undefined;
+    return url;
 };
 
 class IframePreview extends React.PureComponent {
     static propTypes = {
-        document: PropTypes.object // eslint-disable-line react/forbid-prop-types
+        document: PropTypes.object, // eslint-disable-line react/forbid-prop-types
     };
 
     static defaultProps = {
-        document: null
+        document: null,
     };
 
     render() {

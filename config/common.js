@@ -1,2 +1,1 @@
-export const remoteURL = 'https://preview-sykdomifamilien.gtsb.io';
-export const previewURL = remoteURL;
+export const previewURL = 'https://sykdom-i-familien.dev.nav.no';
