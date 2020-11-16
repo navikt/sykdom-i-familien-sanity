@@ -2,7 +2,7 @@ import * as React from 'react';
 import PublishComponent from './PublishComponent';
 
 const stagingPayload = {
-    event_type: 'publish-dev-sbs',
+    event_type: 'publish-dev-gcp',
 };
 
 const productionPayload = {
