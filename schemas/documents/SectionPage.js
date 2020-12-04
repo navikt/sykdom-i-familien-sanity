@@ -25,13 +25,6 @@ const SectionPage = {
             fieldset: 'internal',
         },
         {
-            title: 'Sidetittel',
-            name: 'title',
-            type: 'localeString',
-            fieldset: 'internal',
-            validation: localeContentValidation,
-        },
-        {
             title: 'slug',
             type: 'slug',
             name: 'slug',
@@ -76,9 +69,29 @@ const SectionPage = {
             },
         },
         {
+            title: 'Sidetittel',
+            name: 'title',
+            type: 'localeString',
+            validation: localeContentValidation,
+            options: {
+                collapsible: true,
+            },
+        },
+        {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
+            options: {
+                collapsible: true,
+            },
+        },
+        {
+            title: 'Kort fortalt',
+            name: 'inShort',
+            type: 'localeRichText',
+            options: {
+                collapsible: true,
+            },
         },
         {
             title: 'Innhold',

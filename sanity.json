@@ -5,8 +5,28 @@
     },
     "api": {
         "projectId": "8ux9tyb9",
-        "dataset": "production"
+        "dataset": "arbeidsgiver"
     },
+    "__experimental_spaces": [
+        {
+            "name": "arbeidsgiver",
+            "title": "Arbeidsgiver",
+            "default": true,
+            "api": {
+                "projectId": "8ux9tyb9",
+                "dataset": "arbeidsgiver"
+            }
+        },
+        {
+            "name": "production",
+            "title": "Prod",
+            "default": false,
+            "api": {
+                "projectId": "8ux9tyb9",
+                "dataset": "production"
+            }
+        }
+    ],
     "plugins": [
         "@sanity/base",
         "@sanity/components",
