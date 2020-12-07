@@ -11,7 +11,7 @@
         {
             "name": "preprod",
             "title": "PreProd",
-            "default": true,
+            "default": false,
             "api": {
                 "projectId": "8ux9tyb9",
                 "dataset": "preprod"
@@ -20,7 +20,7 @@
         {
             "name": "production",
             "title": "Prod",
-            "default": false,
+            "default": true,
             "api": {
                 "projectId": "8ux9tyb9",
                 "dataset": "production"
