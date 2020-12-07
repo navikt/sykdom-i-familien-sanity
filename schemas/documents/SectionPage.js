@@ -18,6 +18,13 @@ const SectionPage = {
                 collapsible: true,
             },
         },
+        {
+            name: 'inShort',
+            title: 'Kort fortalt',
+            options: {
+                collapsible: true,
+            },
+        },
     ],
     fields: [
         {
@@ -86,12 +93,23 @@ const SectionPage = {
             },
         },
         {
-            title: 'Kort fortalt',
+            title: 'Tittel - kort fortalt',
+            name: 'inShortTitle',
+            type: 'localeString',
+            fieldset: 'inShort',
+        },
+        {
+            title: 'Illustrasjon - kort fortalt',
+            name: 'inShortIllustration',
+            type: 'reference',
+            fieldset: 'inShort',
+            to: { type: 'illustration' },
+        },
+        {
+            title: 'Innhold - kort fortalt',
             name: 'inShort',
             type: 'localeRichText',
-            options: {
-                collapsible: true,
-            },
+            fieldset: 'inShort',
         },
         {
             title: 'Innhold',
@@ -112,7 +130,7 @@ const SectionPage = {
         select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic', site: 'site' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
                 subtitle: `${props.site || ''}${props.isPublic === false ? ' Kladd' : ''}`,
                 media: <YtelsePageIcon isPublic={props.isPublic} />,
             };

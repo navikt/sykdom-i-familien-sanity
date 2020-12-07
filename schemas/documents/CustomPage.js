@@ -97,7 +97,7 @@ const CustomPage = {
         select: { title: 'title', ytelse: 'ytelse', site: 'site' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
                 subtitle: props.site,
             };
         },

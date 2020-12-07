@@ -8,7 +8,7 @@ import { defaultLocale } from '../locales';
 const STYLES = {
     info: 'info',
     advarsel: 'advarsel',
-    feil: 'feil'
+    feil: 'feil',
 };
 
 const Message = {
@@ -20,18 +20,18 @@ const Message = {
             title: 'Navn (kun internt)',
             name: 'name',
             type: 'string',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Tittel (valgfri)',
             name: 'title',
-            type: 'localeString'
+            type: 'localeString',
         },
         {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Type melding',
@@ -42,38 +42,38 @@ const Message = {
                 list: [
                     { title: 'Info (blå)', value: STYLES.info },
                     { title: 'Advarsel (gul)', value: STYLES.advarsel },
-                    { title: 'Alvorlig (rød)', value: STYLES.feil }
-                ]
+                    { title: 'Alvorlig (rød)', value: STYLES.feil },
+                ],
             },
-            validation: (Rule) => Rule.required()
-        }
+            validation: (Rule) => Rule.required(),
+        },
     ],
     preview: {
         select: {
             name: 'name',
             title: 'title',
             style: 'style',
-            content: 'content'
+            content: 'content',
         },
         prepare(props) {
             const hasTitle = hasLocaleValue(props.title);
 
             const title = `${props.name}`;
             const subtitle = hasTitle
-                ? getLocaleContent(props.title, defaultLocale)
+                ? getLocaleContent(props.title)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
 
             if (hasTitle) {
                 return {
                     title,
-                    subtitle: `[${props.style}] ${shortenText(subtitle)}`
+                    subtitle: `[${props.style}] ${shortenText(subtitle)}`,
                 };
             }
             return {
                 title,
-                subtitle: `[${props.style}] ${shortenText(subtitle) || 'Uten tittel'}`
+                subtitle: `[${props.style}] ${shortenText(subtitle) || 'Uten tittel'}`,
             };
-        }
-    }
+        },
+    },
 };
 export default Message;

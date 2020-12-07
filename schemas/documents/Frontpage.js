@@ -2,6 +2,7 @@ import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import { siteField } from '../fields/siteField';
+import { contentBlocks } from '../contentBlocks';
 
 const Frontpage = {
     title: 'Forside',
@@ -84,18 +85,17 @@ const Frontpage = {
             of: [{ type: 'frontpagePageLink' }, { type: 'frontpageLink' }],
         },
         {
-            title: 'Andre lenker',
-            name: 'frontpageLinks',
+            title: 'Annet',
+            name: 'footerContent',
             type: 'array',
-            description: 'Lenkepaneler - nederste gruppe. Lenker som går til sider utenfor sykdom i familien',
-            of: [{ type: 'frontpageLink' }],
+            of: contentBlocks,
         },
     ],
     preview: {
         select: { title: 'title', ytelse: 'ytelse' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
             };
         },
     },

@@ -9,6 +9,7 @@ import InfopanelMedKnapperContentType from './InfopanelMedKnapper';
 import RasmusVeilederpanel from './RasmusVeilederpanel';
 import AlertStripe from './AlertStripe';
 import FAQ from './FAQ';
+import LinkCollection from './LinkCollection';
 
 const objects = [
     SectionContentType,
@@ -21,7 +22,8 @@ const objects = [
     InfopanelMedKnapperContentType,
     RasmusVeilederpanel,
     AlertStripe,
-    FAQ
+    LinkCollection,
+    FAQ,
 ];
 
 export default objects;

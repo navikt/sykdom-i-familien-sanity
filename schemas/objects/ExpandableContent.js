@@ -11,26 +11,26 @@ const ExpandableContent = {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText',
-            validation: localeContentValidation
-        }
+            validation: localeContentValidation,
+        },
     ],
     preview: {
         select: {
-            title: 'title'
+            title: 'title',
         },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
-                subtitle: 'Ekspanderbart innhold'
+                title: getLocaleContent(props.title),
+                subtitle: 'Ekspanderbart innhold',
             };
-        }
-    }
+        },
+    },
 };
 
 export default ExpandableContent;
