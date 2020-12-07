@@ -5,16 +5,16 @@
     },
     "api": {
         "projectId": "8ux9tyb9",
-        "dataset": "arbeidsgiver"
+        "dataset": "production"
     },
     "__experimental_spaces": [
         {
-            "name": "arbeidsgiver",
-            "title": "Arbeidsgiver",
+            "name": "preprod",
+            "title": "PreProd",
             "default": true,
             "api": {
                 "projectId": "8ux9tyb9",
-                "dataset": "arbeidsgiver"
+                "dataset": "preprod"
             }
         },
         {
