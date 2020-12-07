@@ -2,6 +2,7 @@ import { getLocaleContent } from '../../utils/getLocaleContent';
 import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import { siteField } from '../fields/siteField';
+import { contentBlocks } from '../contentBlocks';
 
 const Frontpage = {
     title: 'Forside',
@@ -10,13 +11,13 @@ const Frontpage = {
     id: 'forside',
     fieldsets: [
         {
+            title: 'Om siden',
             name: 'internal',
-            title: 'Metadata',
             options: {
                 collapsible: true,
             },
         },
-        { title: 'Introduksjon', name: 'introduction' },
+        { title: 'Banner', name: 'banner', options: { collapsible: true } },
     ],
     fields: [
         {
@@ -32,6 +33,15 @@ const Frontpage = {
             validation: localeContentValidation,
         },
         {
+            title: 'Tilgjengelig på nav.no',
+            type: 'boolean',
+            name: 'isPublic',
+            fieldset: 'internal',
+            options: {
+                layout: 'checkbox',
+            },
+        },
+        {
             title: 'Vis språkvalg',
             type: 'boolean',
             name: 'showLanguageToggle',
@@ -44,40 +54,48 @@ const Frontpage = {
             title: 'Tittel',
             name: 'title',
             type: 'localeString',
-            fieldset: 'introduction',
+            fieldset: 'banner',
             validation: localeContentValidation,
         },
+
         {
-            title: 'Ingress',
+            title: 'Tekst under tittel',
             name: 'ingress',
             type: 'localeRichText',
-            fieldset: 'introduction',
-            validation: localeContentValidation,
+            fieldset: 'banner',
         },
         {
             title: 'Illustrasjon',
             name: 'illustration',
             type: 'reference',
+            fieldset: 'banner',
             to: [{ type: 'illustration' }],
         },
         {
-            title: 'Melding',
-            name: 'message',
-            type: 'reference',
-            to: [{ type: 'message' }],
+            title: 'Innhold over innganger',
+            name: 'content',
+            type: 'array',
+            of: [{ type: 'textblock' }, { type: 'reference', title: 'Melding', to: [{ type: 'message' }] }],
         },
         {
-            title: 'Innganger',
+            title: 'Innganger til undersider',
             name: 'frontpageStories',
             type: 'array',
+            description: 'Lenkepaneler - øverste gruppe',
             of: [{ type: 'frontpagePageLink' }, { type: 'frontpageLink' }],
+        },
+        {
+            title: 'Annet',
+            name: 'footerContent',
+            type: 'array',
+            of: contentBlocks,
         },
     ],
     preview: {
         select: { title: 'title', ytelse: 'ytelse' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
             };
         },
     },

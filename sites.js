@@ -7,12 +7,12 @@ const SITES = {
     arbeidsgiver: {
         id: 'arbeidsgiver',
         title: 'Arbeidsgiver',
-        path: 'arbeidsgiver',
+        path: '/arbeidsgiver',
     },
     samarbeid: {
         id: 'samarbeid',
         title: 'Samarbeidspartnere',
-        path: '/samarbeidspartner/',
+        path: '/samarbeidspartner',
     },
 };
 

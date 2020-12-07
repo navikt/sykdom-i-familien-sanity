@@ -6,7 +6,7 @@ import { localeContentValidation } from '../../utils/contentValidation';
 const STYLES = {
     info: 'info',
     advarsel: 'advarsel',
-    feil: 'feil'
+    feil: 'feil',
 };
 
 const AlertStripe = {
@@ -17,13 +17,13 @@ const AlertStripe = {
         {
             title: 'Tittel (valgfri)',
             name: 'title',
-            type: 'localeString'
+            type: 'localeString',
         },
         {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText',
-            validation: localeContentValidation
+            validation: localeContentValidation,
         },
         {
             title: 'Type melding',
@@ -34,36 +34,36 @@ const AlertStripe = {
                 list: [
                     { title: 'Info (blå)', value: STYLES.info },
                     { title: 'Advarsel (gul)', value: STYLES.advarsel },
-                    { title: 'Alvorlig (rød)', value: STYLES.feil }
-                ]
+                    { title: 'Alvorlig (rød)', value: STYLES.feil },
+                ],
             },
-            validation: (Rule) => Rule.required()
-        }
+            validation: (Rule) => Rule.required(),
+        },
     ],
     preview: {
         select: {
             title: 'title',
             style: 'style',
-            content: 'content'
+            content: 'content',
         },
         prepare(props) {
             const hasTitle = hasLocaleValue(props.title);
             const title = hasTitle
-                ? getLocaleContent(props.title, defaultLocale)
+                ? getLocaleContent(props.title)
                 : toPlainText(getLocaleContent(props.content, defaultLocale));
 
             if (hasTitle) {
                 return {
                     title: shortenText(title),
-                    subtitle: `Type: ${props.style}`
+                    subtitle: `Type: ${props.style}`,
                 };
             }
             return {
                 title: shortenText(title) || 'Uten tittel',
-                subtitle: `Type: ${props.style}`
+                subtitle: `Type: ${props.style}`,
             };
-        }
-    }
+        },
+    },
 };
 
 export default AlertStripe;

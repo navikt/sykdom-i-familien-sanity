@@ -18,18 +18,18 @@ const SectionPage = {
                 collapsible: true,
             },
         },
+        {
+            name: 'inShort',
+            title: 'Kort fortalt',
+            options: {
+                collapsible: true,
+            },
+        },
     ],
     fields: [
         {
             ...siteField,
             fieldset: 'internal',
-        },
-        {
-            title: 'Sidetittel',
-            name: 'title',
-            type: 'localeString',
-            fieldset: 'internal',
-            validation: localeContentValidation,
         },
         {
             title: 'slug',
@@ -76,9 +76,40 @@ const SectionPage = {
             },
         },
         {
+            title: 'Sidetittel',
+            name: 'title',
+            type: 'localeString',
+            validation: localeContentValidation,
+            options: {
+                collapsible: true,
+            },
+        },
+        {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
+            options: {
+                collapsible: true,
+            },
+        },
+        {
+            title: 'Tittel - kort fortalt',
+            name: 'inShortTitle',
+            type: 'localeString',
+            fieldset: 'inShort',
+        },
+        {
+            title: 'Illustrasjon - kort fortalt',
+            name: 'inShortIllustration',
+            type: 'reference',
+            fieldset: 'inShort',
+            to: { type: 'illustration' },
+        },
+        {
+            title: 'Innhold - kort fortalt',
+            name: 'inShort',
+            type: 'localeRichText',
+            fieldset: 'inShort',
         },
         {
             title: 'Innhold',
@@ -99,7 +130,7 @@ const SectionPage = {
         select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic', site: 'site' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
                 subtitle: `${props.site || ''}${props.isPublic === false ? ' Kladd' : ''}`,
                 media: <YtelsePageIcon isPublic={props.isPublic} />,
             };

@@ -11,30 +11,30 @@ const FAQ = {
             title: 'Spørsmål',
             name: 'title',
             type: 'localeString',
-            validation: (Rule) => Rule.required()
+            validation: (Rule) => Rule.required(),
         },
         {
             title: 'Svar',
             name: 'content',
             type: 'localeRichText',
-            validation: (Rule) => Rule.required()
-        }
+            validation: (Rule) => Rule.required(),
+        },
     ],
     preview: {
         select: {
             title: 'title',
             layout: 'layout',
-            content: 'content'
+            content: 'content',
         },
         prepare(props) {
-            const title = getLocaleContent(props.title, defaultLocale);
+            const title = getLocaleContent(props.title);
 
             return {
                 title: shortenText(title),
-                subtitle: 'Spørsmål og svar'
+                subtitle: 'Spørsmål og svar',
             };
-        }
-    }
+        },
+    },
 };
 
 export default FAQ;

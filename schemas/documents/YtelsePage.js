@@ -148,7 +148,7 @@ const YtelsePage = {
         select: { title: 'title', ytelse: 'ytelse', isPublic: 'isPublic', site: 'site' },
         prepare(props) {
             return {
-                title: getLocaleContent(props.title, defaultLocale),
+                title: getLocaleContent(props.title),
                 subtitle: `${props.site} ${props.isPublic === false ? 'Kladd' : ''}`,
                 media: <YtelsePageIcon isPublic={props.isPublic} />,
             };

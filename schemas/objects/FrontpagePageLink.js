@@ -15,6 +15,12 @@ const FrontpagePageLink = {
             validation: (Rule) => Rule.required(),
         },
         {
+            title: 'Tittel',
+            description: 'Dersom denne er blank, brukes tittel på siden det lenkes til.',
+            name: 'title',
+            type: 'localeString',
+        },
+        {
             title: 'Innhold',
             name: 'content',
             type: 'localeRichText',
