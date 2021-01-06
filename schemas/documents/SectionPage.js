@@ -1,6 +1,5 @@
 import React from 'react';
 import { getLocaleContent } from '../../utils/getLocaleContent';
-import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import YtelsePageIcon from '../../components/icons/YtelsePageIcon';
 import { siteField } from '../fields/siteField';
@@ -110,6 +109,13 @@ const SectionPage = {
             name: 'inShort',
             type: 'localeRichText',
             fieldset: 'inShort',
+        },
+        {
+            title: 'Ekstra komponenter',
+            name: 'inShortEkstraKomponenter',
+            type: 'array',
+            fieldset: 'inShort',
+            of: [{ type: 'infopanelMedKnapper' }],
         },
         {
             title: 'Innhold',
