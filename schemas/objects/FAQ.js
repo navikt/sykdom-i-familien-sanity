@@ -1,4 +1,3 @@
-import { defaultLocale } from '../locales';
 import { getLocaleContent } from '../../utils/getLocaleContent';
 import { shortenText } from '../../utils/previewUtils';
 
