@@ -1,5 +1,4 @@
 import { getLocaleContent } from '../../utils/getLocaleContent';
-import { defaultLocale } from '../locales';
 import { localeContentValidation } from '../../utils/contentValidation';
 import { siteField } from '../fields/siteField';
 
