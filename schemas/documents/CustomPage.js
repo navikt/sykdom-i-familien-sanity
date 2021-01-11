@@ -23,6 +23,14 @@ const CustomPage = {
                 collapsible: true,
             },
         },
+        {
+            title: 'Tilbake-lenke',
+            description: 'Valgfri. Velg en side for at en "Tilbake til"-lenke skal vises øverst på siden.',
+            name: 'parentPage',
+            options: {
+                collapsible: true,
+            },
+        },
     ],
     fields: [
         {
@@ -74,17 +82,33 @@ const CustomPage = {
             validation: localeContentValidation,
         },
         {
-            title: 'Illustrasjon',
-            name: 'illustration',
-            type: 'reference',
-            to: { type: 'illustration' },
-        },
-        {
             title: 'Ingress',
             name: 'ingress',
             type: 'localeRichText',
             fieldset: 'introduction',
             validation: localeContentValidation,
+        },
+        {
+            title: 'Side',
+            description: 'Velg side det skal lenkes til.',
+            name: 'parentPage_page',
+            type: 'reference',
+            fieldset: 'parentPage',
+            to: [{ type: 'ytelsePage' }, { type: 'sectionPage' }],
+        },
+        {
+            title: 'Lenketekst',
+            description:
+                'Velg tekst som skal brukes. Dersom feltet er tomt, brukes teksten "Tilbake til [sidenavn]", hvor sidenavn er tittel i siden det lenkes til.',
+            name: 'parentPage_linkText',
+            type: 'localeString',
+            fieldset: 'parentPage',
+        },
+        {
+            title: 'Illustrasjon',
+            name: 'illustration',
+            type: 'reference',
+            to: { type: 'illustration' },
         },
         {
             title: 'Innhold',
