@@ -12,7 +12,7 @@ const SITES = {
     samarbeid: {
         id: 'samarbeid',
         title: 'Samarbeidspartnere',
-        path: '/samarbeidspartner',
+        path: '/helsepersonell',
     },
 };
 
