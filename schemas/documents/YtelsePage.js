@@ -32,6 +32,13 @@ const YtelsePage = {
                 collapsible: true,
             },
         },
+        {
+            name: 'faq',
+            title: 'FAQ',
+            options: {
+                collapsible: true,
+            },
+        },
     ],
     fields: [
         {
@@ -116,6 +123,19 @@ const YtelsePage = {
             type: 'reference',
             fieldset: 'inShort',
             to: { type: 'illustration' },
+        },
+        {
+            title: 'Side',
+            name: 'faq',
+            type: 'reference',
+            fieldset: 'faq',
+            to: [{ type: 'customPage' }],
+        },
+        {
+            title: 'Menynavn',
+            name: 'faqMenuTitle',
+            type: 'localeString',
+            fieldset: 'faq',
         },
         {
             title: 'Melding',
