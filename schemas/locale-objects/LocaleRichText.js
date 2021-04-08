@@ -1,4 +1,6 @@
 import supportedLocales from '../locales';
+import link from '../richtext/annotations/link';
+import pdfLink from '../richtext/annotations/pdfLink';
 
 const LocaleRichText = {
     name: 'localeRichText',
@@ -7,8 +9,8 @@ const LocaleRichText = {
         {
             name: 'translations',
             title: 'Oversettelser',
-            options: { collapsible: true }
-        }
+            options: { collapsible: true },
+        },
     ],
     fields: supportedLocales.map((lang) => ({
         title: lang.title,
@@ -17,32 +19,35 @@ const LocaleRichText = {
         of: [
             {
                 type: 'block',
+                marks: {
+                    annotations: [link, pdfLink],
+                },
                 styles: [
                     {
                         title: 'Normal',
-                        value: 'normal'
+                        value: 'normal',
                     },
                     {
                         title: 'Tittel',
-                        value: 'title'
+                        value: 'title',
                     },
                     {
                         title: 'Ingress',
-                        value: 'ingress'
+                        value: 'ingress',
                     },
                     {
                         title: 'Checklist',
-                        value: 'checklist'
+                        value: 'checklist',
                     },
                     {
                         title: 'Knapp',
-                        value: 'button'
-                    }
-                ]
-            }
+                        value: 'button',
+                    },
+                ],
+            },
         ],
-        fieldset: lang.isDefault ? null : 'translations'
-    }))
+        fieldset: lang.isDefault ? null : 'translations',
+    })),
 };
 
 export default LocaleRichText;
