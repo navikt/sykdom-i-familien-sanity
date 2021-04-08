@@ -9,6 +9,7 @@ import Message from './Message';
 import Settings from './Settings';
 import SectionPage from './SectionPage';
 import CustomComponent from './CustomComponent';
+import PDF from './PDF';
 
 const documents = [
     Frontpage,
@@ -22,6 +23,7 @@ const documents = [
     Settings,
     SectionPage,
     CustomComponent,
+    PDF,
 ];
 
 export default documents;

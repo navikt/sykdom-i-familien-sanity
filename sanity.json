@@ -9,12 +9,12 @@
     },
     "__experimental_spaces": [
         {
-            "name": "preprod",
-            "title": "PreProd",
+            "name": "preprod2",
+            "title": "PreProd2",
             "default": false,
             "api": {
                 "projectId": "8ux9tyb9",
-                "dataset": "preprod"
+                "dataset": "preprod2"
             }
         },
         {
