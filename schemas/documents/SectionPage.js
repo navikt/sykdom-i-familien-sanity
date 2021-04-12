@@ -118,6 +118,12 @@ const SectionPage = {
             of: [{ type: 'infopanelMedKnapper' }],
         },
         {
+            title: 'Melding',
+            name: 'message',
+            type: 'reference',
+            to: [{ type: 'message' }],
+        },
+        {
             title: 'Innhold',
             name: 'content',
             type: 'array',
