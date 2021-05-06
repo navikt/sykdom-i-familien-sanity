@@ -39,15 +39,15 @@ export default () =>
                                 .child(getYtelsesiderPart(SITES.sif.id, 'Faktasider - nav.no'))
                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                             S.listItem()
-                                .title('Spørsmål og svar')
-                                .child(getGenerelleSiderPart(SITES.sif.id, 'Spørsmål og svar sider'))
+                                .title('Spørsmål og svar, m.m.')
+                                .child(getGenerelleSiderPart(SITES.sif.id, 'Spørsmål og svar, m.m.'))
                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                             S.listItem()
                                 .title('Andre sider')
                                 .child(getSeksjonssiderPart(undefined, 'Andre sider'))
                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                             S.listItem()
-                                .title('Sider ikke tilgjengelig på nav.no')
+                                .title('Faktasider ikke tilgjengelig på nav.no')
                                 .child(
                                     getYtelsesiderPart(SITES.sif.id, 'Faktasider ikke tilgjengelig på nav.no', false)
                                 )
@@ -170,7 +170,7 @@ export default () =>
                                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                                             S.listItem()
                                                 .title('Andre sider uten site')
-                                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site'))
+                                                .child(getGenerelleSiderPart(undefined, 'Andre sider uten site', true))
                                                 .icon(() => <YtelsePageIcon isPublic={true} />),
                                         ])
                                 ),

@@ -5,10 +5,14 @@ import EditIcon from 'part:@sanity/base/edit-icon';
 import IframePreview from '../../components/previews/iframe/IframePreview';
 import { previewURL } from '../common';
 
-const getGenerelleSiderPart = (site, title) =>
+const getGenerelleSiderPart = (site, title, allPages) =>
     S.documentList()
         .title(title)
-        .filter(`_type == "customPage"${site ? `&& site == "${site}"` : ' && !defined(site)'}`)
+        .filter(
+            allPages
+                ? `_type == "customPage"`
+                : `_type == "customPage"${site ? `&& site == "${site}"` : ' && !defined(site)'}`
+        )
         .child((documentId) =>
             S.document(document)
                 .documentId(documentId)
