@@ -6,7 +6,7 @@ const stagingPayload = {
 };
 
 const productionPayload = {
-    event_type: 'publish-prod-sbs',
+    event_type: 'publish-prod-gcp',
 };
 
 class AdminPage extends React.Component {
